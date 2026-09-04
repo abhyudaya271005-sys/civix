@@ -22,8 +22,8 @@ export const FeedViewer: React.FC<FeedViewerProps> = ({ cameraData }) => {
 
   if (!cameraData) {
     return (
-      <div className="w-full h-full min-h-[260px] bg-slate-100 border border-slate-200 rounded flex flex-col items-center justify-center text-slate-500">
-        <Video size={44} className="mb-2 text-slate-300" />
+      <div className="w-full h-full min-h-[260px] bg-[#0e131d] border border-[#151d2a] rounded flex flex-col items-center justify-center text-slate-400">
+        <Video size={44} className="mb-2 text-slate-600" />
         <p className="text-xs font-medium text-slate-400">Select a camera pin to inspect feed stream.</p>
       </div>
     );
@@ -36,18 +36,18 @@ export const FeedViewer: React.FC<FeedViewerProps> = ({ cameraData }) => {
 
   if (!isAvailable || !feedUrl) {
     return (
-      <div className="w-full h-full min-h-[260px] bg-slate-100 border border-slate-200 rounded flex flex-col items-center justify-center text-slate-500 relative overflow-hidden">
-        <div className="absolute top-2 right-2 bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-200 uppercase">
+      <div className="w-full h-full min-h-[260px] bg-[#0e131d] border border-[#151d2a] rounded flex flex-col items-center justify-center text-slate-400 relative overflow-hidden">
+        <div className="absolute top-2 right-2 bg-amber-950/60 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-800 uppercase">
           Feed Unavailable
         </div>
         <AlertCircle size={36} className="mb-2 text-amber-400" />
-        <p className="text-xs font-medium">Current feed stream unavailable.</p>
+        <p className="text-xs font-medium text-slate-300">Current feed stream unavailable.</p>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full flex-1 min-h-[260px] rounded overflow-hidden border border-slate-800 bg-slate-950 flex items-center justify-center shadow-inner group">
+    <div className="relative w-full flex-1 min-h-[260px] rounded overflow-hidden border border-[#151d2a] bg-[#07090e] flex items-center justify-center shadow-inner group">
       {isVideo ? (
         loadError ? (
           <div className="flex flex-col items-center justify-center p-4 text-center text-slate-400 z-0">

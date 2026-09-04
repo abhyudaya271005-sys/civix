@@ -18,14 +18,14 @@ export const Panel: React.FC<PanelProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white border border-slate-200 rounded shadow-sm overflow-hidden ${className}`}
+      className={`bg-[#0b0e17] border border-[#151d2a] rounded-xs shadow-sm overflow-hidden text-slate-100 ${className}`}
       {...props}
     >
       {(title || headerAction) && (
-        <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="px-4 py-3 bg-[#0e131d] border-b border-[#151d2a] flex items-center justify-between">
           <div>
-            {title && <h3 className="text-sm font-semibold text-slate-900 tracking-tight">{title}</h3>}
-            {subtitle && <p className="text-xs text-slate-500 mt-0.5">{subtitle}</p>}
+            {title && <h3 className="text-xs font-bold text-white uppercase tracking-wider">{title}</h3>}
+            {subtitle && <p className="text-[11px] text-[#64748b] mt-0.5">{subtitle}</p>}
           </div>
           {headerAction && <div>{headerAction}</div>}
         </div>

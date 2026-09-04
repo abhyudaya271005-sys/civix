@@ -1,11 +1,16 @@
 import psycopg2
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 def seed_demo_case_access():
     print("==========================================================")
     print("SEEDING DEMO CASE ACCESS FOR ADMIN USER")
     print("==========================================================")
     
-    conn = psycopg2.connect(dbname="civix_demo", user="postgres", password="postgres", host="localhost", port=5432)
+    from civix_api.config import settings
+    sync_dsn = settings.civix_database_url.replace("postgresql+asyncpg://", "postgresql://")
+    conn = psycopg2.connect(sync_dsn)
     cur = conn.cursor()
     
     admin_user_id = "00000000-0000-0000-0000-000000000001"

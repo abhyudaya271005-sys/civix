@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCaseSelection } from '../context/CaseSelectionContext';
 import { spatialApi } from '../api/spatial';
 import type { 
   SpatialCaseFeature, 
@@ -32,6 +34,9 @@ import {
 } from 'lucide-react';
 
 export const SpatialIntelligencePage: React.FC = () => {
+  const navigate = useNavigate();
+  const { setSelectedCaseId: setContextCaseId } = useCaseSelection();
+
   // Mode & Cases State
   const [viewMode, setViewMode] = useState<'GLOBAL_MAP' | 'CASE_EVENT_MAP'>('GLOBAL_MAP');
   const [cases, setCases] = useState<SpatialCaseFeature[]>([]);
@@ -39,6 +44,12 @@ export const SpatialIntelligencePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const handleInspectCase = (caseId: string) => {
+    setSelectedCaseId(caseId);
+    setContextCaseId(caseId);
+    navigate(`/cases/${caseId}`);
+  };
 
   // Case Event Map State
   const [activeCaseEvents, setActiveCaseEvents] = useState<SpatialEventFeature[]>([]);
@@ -53,6 +64,7 @@ export const SpatialIntelligencePage: React.FC = () => {
   // Global Filters
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
+  const [caseTypeFilter, setCaseTypeFilter] = useState<string>('ALL');
   const [priorityFilter, setPriorityFilter] = useState<string>('ALL');
 
   // Layer Controls
@@ -114,6 +126,7 @@ export const SpatialIntelligencePage: React.FC = () => {
   const filteredCases = useMemo(() => {
     return cases.filter(c => {
       if (statusFilter !== 'ALL' && c.properties.status !== statusFilter) return false;
+      if (caseTypeFilter !== 'ALL' && c.properties.case_type !== caseTypeFilter) return false;
       if (priorityFilter !== 'ALL' && c.properties.priority !== priorityFilter) return false;
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
@@ -124,7 +137,7 @@ export const SpatialIntelligencePage: React.FC = () => {
       }
       return true;
     });
-  }, [cases, statusFilter, priorityFilter, searchQuery]);
+  }, [cases, statusFilter, caseTypeFilter, priorityFilter, searchQuery]);
 
   const filteredCaseEvents = useMemo(() => {
     return activeCaseEvents.filter(e => {
@@ -185,32 +198,34 @@ export const SpatialIntelligencePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans p-4 sm:p-6 space-y-5">
+    <div className="min-h-screen bg-[#07090e] text-slate-100 font-sans p-4 sm:p-6 space-y-5">
       {/* Top Header Controls Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white border border-slate-200 rounded p-4 shadow-2xs">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-[#0b0e17] border border-[#151d2a] rounded p-4 shadow-sm">
         <div>
           {viewMode === 'CASE_EVENT_MAP' ? (
             <div className="space-y-1">
               <button
                 onClick={handleBackToGlobalMap}
-                className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#1a3a6c] hover:text-[#132c54] bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2.5 py-1 rounded transition-colors mb-1 cursor-pointer"
+                className="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-200 hover:text-white bg-[#0e131d] hover:bg-[#151d2a] border border-[#151d2a] px-2.5 py-1 rounded transition-colors mb-1 cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back to Global Map</span>
               </button>
-              <h1 className="text-xl font-bold text-[#1a3a6c] tracking-tight uppercase flex items-center space-x-2">
+              <h1 className="text-xl font-bold text-white tracking-tight uppercase flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-[#BD3535]"></span>
                 <span>CASE EVENT MAP: {selectedCase?.properties.title || 'Investigative Case'}</span>
               </h1>
-              <p className="text-slate-500 text-xs">
+              <p className="text-slate-400 text-xs">
                 Spatial event chronology and evidence
               </p>
             </div>
           ) : (
             <div>
-              <h1 className="text-xl font-bold text-[#1a3a6c] tracking-tight uppercase">
+              <h1 className="text-xl font-bold text-white tracking-tight uppercase flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#BD3535]"></span>
                 SPATIAL INTELLIGENCE
               </h1>
-              <p className="text-slate-500 text-xs mt-0.5">
+              <p className="text-slate-400 text-xs mt-0.5">
                 Delhi NCR Operational Map & Case Intelligence Overview
               </p>
             </div>
@@ -225,7 +240,7 @@ export const SpatialIntelligencePage: React.FC = () => {
               <select
                 value={selectedCaseId || ''}
                 onChange={(e) => handleOpenEventMap(e.target.value)}
-                className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#1a3a6c] shadow-2xs cursor-pointer max-w-xs truncate"
+                className="bg-[#0e131d] border border-[#151d2a] text-slate-200 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#BD3535] shadow-sm cursor-pointer max-w-xs truncate"
               >
                 {cases.map((c) => (
                   <option key={c.properties.case_id} value={c.properties.case_id}>
@@ -244,26 +259,31 @@ export const SpatialIntelligencePage: React.FC = () => {
                   placeholder="Search FIR, title, case ID..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded pl-7 pr-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#1a3a6c] shadow-2xs w-48 focus:w-60 transition-all"
+                  className="bg-[#0e131d] border border-[#151d2a] text-slate-200 text-xs font-semibold rounded pl-7 pr-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#BD3535] shadow-sm w-48 focus:w-60 transition-all placeholder-slate-500"
                 />
                 <Filter className="w-3.5 h-3.5 text-slate-400 absolute left-2 top-2" />
               </div>
-              {/* Case Scope Filter */}
+              {/* Case Type Filter */}
               <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#1a3a6c] shadow-2xs cursor-pointer"
+                value={caseTypeFilter}
+                onChange={(e) => setCaseTypeFilter(e.target.value)}
+                className="bg-[#0e131d] border border-[#151d2a] text-slate-200 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#BD3535] shadow-sm cursor-pointer"
               >
-                <option value="ALL">All Cases</option>
+                <option value="ALL">All Case Types</option>
+                <option value="CRIMINAL">Criminal</option>
+                <option value="FINANCIAL">Financial</option>
+                <option value="INTELLIGENCE">Intelligence</option>
+                <option value="MULTI_CASE">Multi-Case</option>
               </select>
 
               {/* Status Filter */}
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#1a3a6c] shadow-2xs cursor-pointer"
+                className="bg-[#0e131d] border border-[#151d2a] text-slate-200 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#BD3535] shadow-sm cursor-pointer"
               >
                 <option value="ALL">All Status</option>
+                <option value="ACTIVE">Active</option>
                 <option value="OPEN">Open</option>
                 <option value="UNDER_INVESTIGATION">Under Investigation</option>
                 <option value="CLOSED_SOLVED">Closed Solved</option>
@@ -273,7 +293,7 @@ export const SpatialIntelligencePage: React.FC = () => {
               <select
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
-                className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#1a3a6c] shadow-2xs cursor-pointer"
+                className="bg-[#0e131d] border border-[#151d2a] text-slate-200 text-xs font-semibold rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#BD3535] shadow-sm cursor-pointer"
               >
                 <option value="ALL">All Priorities</option>
                 <option value="CRITICAL">Critical</option>
@@ -282,8 +302,8 @@ export const SpatialIntelligencePage: React.FC = () => {
                 <option value="LOW">Low</option>
               </select>
 
-              <button className="flex items-center space-x-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-semibold px-3 py-1.5 rounded shadow-2xs transition-colors cursor-pointer">
-                <Filter className="w-3.5 h-3.5 text-slate-500" />
+              <button className="flex items-center space-x-1.5 bg-[#0e131d] hover:bg-[#151d2a] text-slate-200 border border-[#151d2a] text-xs font-semibold px-3 py-1.5 rounded shadow-sm transition-colors cursor-pointer">
+                <Filter className="w-3.5 h-3.5 text-slate-400" />
                 <span>Filters</span>
               </button>
             </>
@@ -292,7 +312,7 @@ export const SpatialIntelligencePage: React.FC = () => {
           <button 
             onClick={fetchCases}
             disabled={isLoading}
-            className="flex items-center space-x-1.5 bg-[#1a3a6c] hover:bg-[#132c54] text-white text-xs font-semibold px-3 py-1.5 rounded shadow-2xs transition-colors cursor-pointer"
+            className="flex items-center space-x-1.5 bg-[#BD3535] hover:bg-[#a32a2a] text-white text-xs font-semibold px-3 py-1.5 rounded shadow-sm transition-colors cursor-pointer"
           >
             <Calendar className="w-3.5 h-3.5 text-amber-400" />
             <span>View Timeline</span>
@@ -302,14 +322,14 @@ export const SpatialIntelligencePage: React.FC = () => {
 
       {/* Error Banner */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded text-xs flex items-center justify-between">
+        <div className="bg-red-950/40 border border-red-900/60 text-red-300 p-3 rounded text-xs flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <AlertTriangle className="w-4 h-4 text-red-600" />
+            <AlertTriangle className="w-4 h-4 text-red-400" />
             <span>{error}</span>
           </div>
           <button 
             onClick={fetchCases}
-            className="bg-red-100 hover:bg-red-200 text-red-800 px-2 py-1 rounded font-semibold text-[11px]"
+            className="bg-red-900/60 hover:bg-red-800 text-red-200 px-2 py-1 rounded font-semibold text-[11px]"
           >
             Retry
           </button>
@@ -322,11 +342,11 @@ export const SpatialIntelligencePage: React.FC = () => {
         <>
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 items-stretch">
             {/* Left Column (8 cols): NCR Interactive Map */}
-            <div className="xl:col-span-8 bg-white border border-slate-200 rounded p-3 shadow-2xs flex flex-col h-[560px]">
-              <div className="flex-1 w-full h-full min-h-0">
+            <div className="xl:col-span-8 bg-[#0b0e17] border border-[#151d2a] rounded p-3 shadow-sm flex flex-col h-[560px]">
+              <div className="flex-1 w-full h-full min-h-0 rounded overflow-hidden border border-[#151d2a]">
                 {isLoading ? (
-                  <div className="w-full h-full bg-slate-100 rounded border border-slate-200 flex flex-col items-center justify-center text-slate-400 text-xs animate-pulse">
-                    <RefreshCw className="w-6 h-6 animate-spin text-slate-400 mb-2" />
+                  <div className="w-full h-full bg-[#07090e] rounded border border-[#151d2a] flex flex-col items-center justify-center text-slate-400 text-xs animate-pulse">
+                    <RefreshCw className="w-6 h-6 animate-spin text-[#BD3535] mb-2" />
                     <span>Loading Delhi NCR Spatial Case Footprints...</span>
                   </div>
                 ) : (
@@ -334,6 +354,8 @@ export const SpatialIntelligencePage: React.FC = () => {
                     cases={filteredCases}
                     selectedCaseId={selectedCaseId}
                     onSelectCase={setSelectedCaseId}
+                    onInspectCase={handleInspectCase}
+                    onOpenEventMap={handleOpenEventMap}
                   />
                 )}
               </div>
@@ -345,6 +367,7 @@ export const SpatialIntelligencePage: React.FC = () => {
               <CaseSummaryPanel
                 selectedCase={selectedCase}
                 onOpenEventMap={handleOpenEventMap}
+                onInspectCase={handleInspectCase}
               />
 
               {/* Spatial Layers Card */}
@@ -364,18 +387,18 @@ export const SpatialIntelligencePage: React.FC = () => {
           </div>
 
           {/* Bottom Section: Active Cases Table */}
-          <div className="bg-white border border-slate-200 rounded shadow-2xs p-4">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
-              <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <div className="bg-[#0b0e17] border border-[#151d2a] rounded shadow-sm p-4">
+            <div className="flex items-center justify-between border-b border-[#151d2a] pb-3 mb-3">
+              <h2 className="text-xs font-bold text-white uppercase tracking-wider">
                 ACTIVE CASES IN VIEWPORT ({filteredCases.length})
               </h2>
-              <span className="text-[11px] font-mono text-slate-400">Showing top case footprints</span>
+              <span className="text-[11px] font-mono text-slate-500">Showing top case footprints</span>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50 text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                  <tr className="border-b border-[#151d2a] bg-[#0e131d] text-[10px] uppercase font-bold text-slate-400 tracking-wider">
                     <th className="py-2.5 px-3">CASE ID</th>
                     <th className="py-2.5 px-3">TITLE / SUBJECT</th>
                     <th className="py-2.5 px-3">STATUS</th>
@@ -385,7 +408,7 @@ export const SpatialIntelligencePage: React.FC = () => {
                     <th className="py-2.5 px-3 text-right">ACTION</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700 font-sans">
+                <tbody className="divide-y divide-[#151d2a] text-slate-300 font-sans">
                   {filteredCases.map((feat) => {
                     const { case_id, title, status, priority, case_type } = feat.properties;
                     const isSelected = case_id === selectedCaseId;
@@ -394,20 +417,20 @@ export const SpatialIntelligencePage: React.FC = () => {
                       <tr
                         key={case_id}
                         onClick={() => setSelectedCaseId(case_id)}
-                        className={`hover:bg-blue-50/60 transition-colors cursor-pointer ${
-                          isSelected ? 'bg-blue-50/80 font-medium' : ''
+                        className={`hover:bg-[#0e131d] transition-colors cursor-pointer ${
+                          isSelected ? 'bg-[#181116] font-medium' : ''
                         }`}
                       >
                         <td className="py-2.5 px-3 font-mono text-[11px]">
-                          <div className="flex items-center space-x-1.5 text-slate-500">
+                          <div className="flex items-center space-x-1.5 text-slate-400">
                             <span>{case_id.slice(0, 8)}...</span>
                             <button
                               onClick={(e) => handleCopyCaseId(case_id, e)}
-                              className="text-slate-400 hover:text-slate-700 transition-colors"
+                              className="text-slate-500 hover:text-white transition-colors"
                               title="Copy Case ID"
                             >
                               {copiedId === case_id ? (
-                                <Check className="w-3 h-3 text-emerald-600" />
+                                <Check className="w-3 h-3 text-emerald-400" />
                               ) : (
                                 <Copy className="w-3 h-3" />
                               )}
@@ -415,32 +438,32 @@ export const SpatialIntelligencePage: React.FC = () => {
                           </div>
                         </td>
 
-                        <td className="py-2.5 px-3 font-semibold text-slate-900">
+                        <td className="py-2.5 px-3 font-semibold text-white">
                           {title}
                         </td>
 
                         <td className="py-2.5 px-3">
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-50 text-blue-800 border border-blue-200">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-950/60 text-blue-300 border border-blue-800">
                             {status}
                           </span>
                         </td>
 
                         <td className="py-2.5 px-3">
                           <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                            priority === 'CRITICAL' ? 'bg-red-50 text-red-700 border border-red-200' :
-                            priority === 'HIGH' ? 'bg-orange-50 text-orange-700 border border-orange-200' :
-                            'bg-amber-50 text-amber-700 border border-amber-200'
+                            priority === 'CRITICAL' ? 'bg-red-950/60 text-red-300 border border-red-800' :
+                            priority === 'HIGH' ? 'bg-orange-950/60 text-orange-300 border border-orange-800' :
+                            'bg-amber-950/60 text-amber-300 border border-amber-800'
                           }`}>
                             {priority}
                           </span>
                         </td>
 
-                        <td className="py-2.5 px-3 text-slate-600">
+                        <td className="py-2.5 px-3 text-slate-300">
                           <div className="flex items-center space-x-1">
-                            {case_type.includes('FINANCIAL') || case_type.includes('FRAUD') ? <Scale className="w-3 h-3 text-slate-400" /> :
-                             case_type === 'CRIMINAL' || case_type === 'ORGANIZED_CRIME' ? <Shield className="w-3 h-3 text-slate-400" /> :
-                             case_type === 'INTELLIGENCE' ? <AlertCircle className="w-3 h-3 text-slate-400" /> :
-                             <Briefcase className="w-3 h-3 text-slate-400" />}
+                            {case_type.includes('FINANCIAL') || case_type.includes('FRAUD') ? <Scale className="w-3 h-3 text-slate-500" /> :
+                             case_type === 'CRIMINAL' || case_type === 'ORGANIZED_CRIME' ? <Shield className="w-3 h-3 text-slate-500" /> :
+                             case_type === 'INTELLIGENCE' ? <AlertCircle className="w-3 h-3 text-slate-500" /> :
+                             <Briefcase className="w-3 h-3 text-slate-500" />}
                             <span>{case_type}</span>
                           </div>
                         </td>
@@ -450,7 +473,17 @@ export const SpatialIntelligencePage: React.FC = () => {
                         </td>
 
                         <td className="py-2.5 px-3 text-right">
-                          <ArrowRight className="w-4 h-4 text-slate-400 inline-block" />
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleInspectCase(case_id);
+                            }}
+                            className="px-2 py-1 text-[11px] font-semibold text-white bg-[#BD3535] hover:bg-[#962626] rounded-xs transition-colors inline-flex items-center space-x-1 shadow-xs cursor-pointer"
+                            title="Inspect Case in Workspace"
+                          >
+                            <span>Inspect</span>
+                            <ArrowRight className="w-3 h-3" />
+                          </button>
                         </td>
                       </tr>
                     );
@@ -459,13 +492,13 @@ export const SpatialIntelligencePage: React.FC = () => {
               </table>
             </div>
 
-            <div className="mt-3 pt-3 border-t border-slate-100 text-center">
+            <div className="mt-3 pt-3 border-t border-[#151d2a] text-center">
               <button 
-                onClick={() => alert('Viewing all 250 cases.')}
-                className="text-xs font-bold text-[#1a3a6c] hover:underline inline-flex items-center space-x-1"
+                onClick={() => navigate('/cases')}
+                className="text-xs font-bold text-[#BD3535] hover:underline inline-flex items-center space-x-1 cursor-pointer"
               >
-                <span>View All Cases (250)</span>
-                <ArrowRight className="w-3.5 h-3.5 text-amber-500" />
+                <span>View All Cases</span>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
               </button>
             </div>
           </div>
@@ -488,29 +521,29 @@ export const SpatialIntelligencePage: React.FC = () => {
           {/* Split Workspace: Map + Inspector */}
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 items-stretch">
             {/* Left Column (8 cols): Case Event Map */}
-            <div className="xl:col-span-8 bg-white border border-slate-200 rounded p-3 shadow-2xs flex flex-col h-[520px]">
-              <div className="flex-1 w-full h-full min-h-0">
+            <div className="xl:col-span-8 bg-[#0b0e17] border border-[#151d2a] rounded p-3 shadow-sm flex flex-col h-[520px]">
+              <div className="flex-1 w-full h-full min-h-0 rounded overflow-hidden border border-[#151d2a]">
                 {isEventsLoading ? (
-                  <div className="w-full h-full bg-slate-100 rounded border border-slate-200 flex flex-col items-center justify-center text-slate-400 text-xs animate-pulse">
-                    <RefreshCw className="w-6 h-6 animate-spin text-slate-400 mb-2" />
+                  <div className="w-full h-full bg-[#07090e] rounded border border-[#151d2a] flex flex-col items-center justify-center text-slate-400 text-xs animate-pulse">
+                    <RefreshCw className="w-6 h-6 animate-spin text-[#BD3535] mb-2" />
                     <span>Loading Case Spatial Events...</span>
                   </div>
                 ) : eventsError ? (
-                  <div className="w-full h-full bg-slate-50 rounded border border-slate-200 flex flex-col items-center justify-center p-6 text-center text-slate-500 text-xs">
-                    <AlertTriangle className="w-8 h-8 text-amber-600 mb-2" />
-                    <h3 className="font-bold text-slate-800 text-sm">NO SPATIAL EVENTS</h3>
-                    <p className="max-w-xs mt-1 text-slate-500">{eventsError}</p>
+                  <div className="w-full h-full bg-[#0e131d] rounded border border-[#151d2a] flex flex-col items-center justify-center p-6 text-center text-slate-400 text-xs">
+                    <AlertTriangle className="w-8 h-8 text-amber-400 mb-2" />
+                    <h3 className="font-bold text-white text-sm">NO SPATIAL EVENTS</h3>
+                    <p className="max-w-xs mt-1 text-slate-400">{eventsError}</p>
                   </div>
                 ) : filteredCaseEvents.length === 0 ? (
-                  <div className="w-full h-full bg-slate-50 rounded border border-slate-200 flex flex-col items-center justify-center p-6 text-center text-slate-500 text-xs">
-                    <MapPin className="w-8 h-8 text-slate-300 mb-2" />
-                    <h3 className="font-bold text-slate-800 text-sm">NO MATCHING SPATIAL EVENTS</h3>
-                    <p className="max-w-xs mt-1 text-slate-500">
+                  <div className="w-full h-full bg-[#0e131d] rounded border border-[#151d2a] flex flex-col items-center justify-center p-6 text-center text-slate-400 text-xs">
+                    <MapPin className="w-8 h-8 text-slate-600 mb-2" />
+                    <h3 className="font-bold text-white text-sm">NO MATCHING SPATIAL EVENTS</h3>
+                    <p className="max-w-xs mt-1 text-slate-400">
                       Try adjusting or clearing the active event filters.
                     </p>
                     <button
                       onClick={handleClearCaseFilters}
-                      className="mt-3 bg-[#1a3a6c] text-white px-3 py-1.5 rounded text-xs font-semibold"
+                      className="mt-3 bg-[#BD3535] text-white px-3 py-1.5 rounded text-xs font-semibold"
                     >
                       Clear Filters
                     </button>
@@ -533,10 +566,10 @@ export const SpatialIntelligencePage: React.FC = () => {
                   onClose={() => setSelectedEventId(null)}
                 />
               ) : (
-                <div className="bg-white border border-slate-200 rounded p-6 shadow-sm flex flex-col items-center justify-center text-center h-[280px]">
-                  <Layers className="w-8 h-8 text-slate-300 mb-2" />
-                  <h3 className="text-sm font-bold text-slate-800">Select an Event</h3>
-                  <p className="text-xs text-slate-500 max-w-xs mt-1">
+                <div className="bg-[#0b0e17] border border-[#151d2a] rounded p-6 shadow-sm flex flex-col items-center justify-center text-center h-[280px]">
+                  <Layers className="w-8 h-8 text-slate-600 mb-2" />
+                  <h3 className="text-sm font-bold text-white">Select an Event</h3>
+                  <p className="text-xs text-slate-400 max-w-xs mt-1">
                     Click an event marker on the map or a node on the timeline scrubber to inspect details, predicates, timestamps, and evidence.
                   </p>
                 </div>

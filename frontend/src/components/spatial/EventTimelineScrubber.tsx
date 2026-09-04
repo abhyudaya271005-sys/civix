@@ -25,16 +25,16 @@ const getPredicateLabel = (pred: LocationPredicate): string => {
 const getEpistemicStyle = (status: EpistemicStatus) => {
   switch (status) {
     case 'CONFIRMED':
-      return { bg: 'bg-emerald-50 text-emerald-800 border-emerald-300', dot: 'bg-emerald-600 ring-emerald-200' };
+      return { bg: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/80', dot: 'bg-emerald-500 ring-emerald-900' };
     case 'PROBABLE':
-      return { bg: 'bg-amber-50 text-amber-800 border-amber-300', dot: 'bg-amber-600 ring-amber-200' };
+      return { bg: 'bg-amber-950/60 text-amber-300 border-amber-800/80', dot: 'bg-amber-500 ring-amber-900' };
     case 'POSSIBLE':
-      return { bg: 'bg-slate-100 text-slate-700 border-slate-300', dot: 'bg-slate-500 ring-slate-200' };
+      return { bg: 'bg-slate-900 text-slate-300 border-slate-700', dot: 'bg-slate-500 ring-slate-800' };
     case 'REFUTED':
-      return { bg: 'bg-red-50 text-red-800 border-red-300 line-through', dot: 'bg-red-500 ring-red-200' };
+      return { bg: 'bg-red-950/60 text-red-300 border-red-800/80 line-through', dot: 'bg-red-500 ring-red-900' };
     case 'INCONCLUSIVE':
     default:
-      return { bg: 'bg-gray-100 text-gray-700 border-gray-300', dot: 'bg-gray-400 ring-gray-200' };
+      return { bg: 'bg-[#151d2a] text-slate-400 border-slate-700', dot: 'bg-slate-600 ring-slate-800' };
   }
 };
 
@@ -69,7 +69,7 @@ export const EventTimelineScrubber: React.FC<EventTimelineScrubberProps> = ({
 
   if (sortedEvents.length === 0) {
     return (
-      <div className="bg-white border border-slate-200 rounded p-4 text-center text-xs text-slate-400">
+      <div className="bg-[#0b0e17] border border-[#151d2a] rounded p-4 text-center text-xs text-slate-500 font-mono">
         No chronological spatial events available for timeline display.
       </div>
     );
@@ -96,15 +96,15 @@ export const EventTimelineScrubber: React.FC<EventTimelineScrubberProps> = ({
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded p-3.5 shadow-2xs space-y-3 font-sans">
-      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+    <div className="bg-[#0b0e17] border border-[#151d2a] rounded p-3.5 shadow-2xs space-y-3 font-sans">
+      <div className="flex items-center justify-between border-b border-[#151d2a] pb-2">
         <div className="flex items-center space-x-1.5">
-          <Clock className="w-3.5 h-3.5 text-[#1a3a6c]" />
-          <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+          <Clock className="w-3.5 h-3.5 text-[#BD3535]" />
+          <h3 className="text-xs font-bold text-white uppercase tracking-wider">
             CHRONOLOGICAL EVENT TIMELINE SCRUBBER ({sortedEvents.length})
           </h3>
         </div>
-        <span className="text-[10px] text-slate-400 font-mono">
+        <span className="text-[10px] text-slate-500 font-mono">
           Select an event node to focus map & inspector
         </span>
       </div>
@@ -112,7 +112,7 @@ export const EventTimelineScrubber: React.FC<EventTimelineScrubberProps> = ({
       {/* Horizontal Scrubber Container */}
       <div
         ref={containerRef}
-        className="overflow-x-auto pb-2 pt-1 flex items-start space-x-4 scrollbar-thin scrollbar-thumb-slate-300"
+        className="overflow-x-auto pb-2 pt-1 flex items-start space-x-4 scrollbar-thin scrollbar-thumb-[#151d2a]"
       >
         {sortedEvents.map((evt) => {
           const props = evt.properties;
@@ -127,17 +127,17 @@ export const EventTimelineScrubber: React.FC<EventTimelineScrubberProps> = ({
               onClick={() => onSelectEvent(props.event_location_id)}
               className={`flex-shrink-0 w-56 p-2.5 rounded border transition-all cursor-pointer relative ${
                 isSelected
-                  ? 'bg-blue-50/90 border-[#1a3a6c] shadow-md ring-2 ring-[#1a3a6c]/20'
-                  : 'bg-slate-50 hover:bg-slate-100 border-slate-200'
+                  ? 'bg-[#181116] border-[#BD3535] shadow-md ring-2 ring-[#BD3535]/30'
+                  : 'bg-[#0e131d] hover:bg-[#131926] border-[#151d2a]'
               }`}
             >
               {/* Timeline Connector Bar */}
               <div className="flex items-center space-x-2 mb-1.5">
                 <span className={`w-2.5 h-2.5 rounded-full ${epistemic.dot} ring-2 flex-shrink-0`} />
-                <span className="font-mono text-[10px] font-bold text-slate-600">
+                <span className="font-mono text-[10px] font-bold text-slate-300">
                   {formatTimeOnly(props.event_start)}
                 </span>
-                <span className="text-[9px] text-slate-400 font-mono">
+                <span className="text-[9px] text-slate-500 font-mono">
                   {formatDateShort(props.event_start)}
                 </span>
               </div>
@@ -147,14 +147,14 @@ export const EventTimelineScrubber: React.FC<EventTimelineScrubberProps> = ({
                 <span className="text-[9px] font-mono font-bold uppercase text-slate-400 block leading-tight">
                   {props.event_type}
                 </span>
-                <h4 className="text-xs font-bold text-slate-900 leading-tight truncate" title={props.location_name}>
+                <h4 className="text-xs font-bold text-white leading-tight truncate" title={props.location_name}>
                   {props.location_name}
                 </h4>
               </div>
 
               {/* Predicate & Epistemic Badges */}
               <div className="flex flex-wrap items-center gap-1 text-[9px]">
-                <span className="bg-white text-slate-700 px-1.5 py-0.5 rounded border border-slate-200 font-semibold truncate max-w-[120px]">
+                <span className="bg-[#151d2a] text-slate-300 px-1.5 py-0.5 rounded border border-[#1b2536] font-semibold truncate max-w-[120px]">
                   {predLabel}
                 </span>
                 <span className={`px-1.5 py-0.5 rounded border font-bold uppercase ${epistemic.bg}`}>
@@ -164,7 +164,7 @@ export const EventTimelineScrubber: React.FC<EventTimelineScrubberProps> = ({
 
               {/* Open ended indicator */}
               {props.is_open_ended && (
-                <span className="mt-1 inline-block text-[8px] font-bold uppercase bg-amber-50 text-amber-700 px-1 rounded border border-amber-200">
+                <span className="mt-1 inline-block text-[8px] font-bold uppercase bg-amber-950/60 text-amber-300 px-1 rounded border border-amber-800">
                   Open Ended
                 </span>
               )}

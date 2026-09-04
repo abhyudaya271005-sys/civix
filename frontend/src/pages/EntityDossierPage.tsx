@@ -51,33 +51,33 @@ const ENTITY_ICONS: Record<string, React.ElementType> = {
 };
 
 const ENTITY_COLOR_CLASS: Record<string, string> = {
-  PERSON: 'bg-blue-50 border-blue-200 text-blue-800',
-  ORGANIZATION: 'bg-amber-50 border-amber-200 text-amber-800',
-  DEVICE: 'bg-purple-50 border-purple-200 text-purple-800',
-  PHONE_NUMBER: 'bg-emerald-50 border-emerald-200 text-emerald-800',
-  VEHICLE: 'bg-red-50 border-red-200 text-red-800',
-  FINANCIAL_ACCOUNT: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-  SOURCE_IDENTITY: 'bg-slate-100 border-slate-300 text-slate-800',
+  PERSON: 'bg-blue-950/60 border-blue-800/40 text-blue-300',
+  ORGANIZATION: 'bg-amber-950/60 border-amber-800/40 text-amber-300',
+  DEVICE: 'bg-purple-950/60 border-purple-800/40 text-purple-300',
+  PHONE_NUMBER: 'bg-emerald-950/60 border-emerald-800/40 text-emerald-300',
+  VEHICLE: 'bg-[#2d0e12] border-[#BD3535]/40 text-red-300',
+  FINANCIAL_ACCOUNT: 'bg-yellow-950/60 border-yellow-800/40 text-yellow-300',
+  SOURCE_IDENTITY: 'bg-[#151d2a] border-[#232f48] text-slate-300',
 };
 
 const ENTITY_ICON_BORDER: Record<string, string> = {
-  PERSON: 'bg-blue-100 border-blue-300',
-  ORGANIZATION: 'bg-amber-100 border-amber-300',
-  DEVICE: 'bg-purple-100 border-purple-300',
-  PHONE_NUMBER: 'bg-emerald-100 border-emerald-300',
-  VEHICLE: 'bg-red-100 border-red-300',
-  FINANCIAL_ACCOUNT: 'bg-yellow-100 border-yellow-300',
-  SOURCE_IDENTITY: 'bg-slate-200 border-slate-300',
+  PERSON: 'bg-[#080b12] border-blue-900/60',
+  ORGANIZATION: 'bg-[#080b12] border-amber-900/60',
+  DEVICE: 'bg-[#080b12] border-purple-900/60',
+  PHONE_NUMBER: 'bg-[#080b12] border-emerald-900/60',
+  VEHICLE: 'bg-[#080b12] border-[#BD3535]/60',
+  FINANCIAL_ACCOUNT: 'bg-[#080b12] border-yellow-900/60',
+  SOURCE_IDENTITY: 'bg-[#080b12] border-[#232f48]',
 };
 
 const ENTITY_ICON_COLOR: Record<string, string> = {
-  PERSON: 'text-blue-700',
-  ORGANIZATION: 'text-amber-700',
-  DEVICE: 'text-purple-700',
-  PHONE_NUMBER: 'text-emerald-700',
-  VEHICLE: 'text-red-700',
-  FINANCIAL_ACCOUNT: 'text-yellow-700',
-  SOURCE_IDENTITY: 'text-slate-700',
+  PERSON: 'text-blue-400',
+  ORGANIZATION: 'text-amber-400',
+  DEVICE: 'text-purple-400',
+  PHONE_NUMBER: 'text-emerald-400',
+  VEHICLE: 'text-red-400',
+  FINANCIAL_ACCOUNT: 'text-yellow-400',
+  SOURCE_IDENTITY: 'text-slate-400',
 };
 
 function getEntityIcon(type: string): React.ElementType {
@@ -108,12 +108,12 @@ interface AttributeRowProps {
 }
 
 const AttributeRow: React.FC<AttributeRowProps> = ({ label, value, icon: Icon, mono = false }) => (
-  <div className="flex items-start py-2 border-b border-slate-100 last:border-b-0">
+  <div className="flex items-start py-2 border-b border-[#151d2a] last:border-b-0">
     <div className="w-40 flex-shrink-0 flex items-center space-x-2 pr-3">
-      {Icon && <Icon className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />}
-      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">{label}</span>
+      {Icon && <Icon className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />}
+      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide font-mono">{label}</span>
     </div>
-    <div className={`flex-1 text-xs ${mono ? 'font-mono text-slate-700' : 'text-slate-800 font-medium'}`}>
+    <div className={`flex-1 text-xs ${mono ? 'font-mono text-slate-300' : 'text-slate-200 font-medium'}`}>
       {value}
     </div>
   </div>
@@ -129,11 +129,11 @@ interface SectionPanelProps {
 }
 
 const SectionPanel: React.FC<SectionPanelProps> = ({ title, subtitle, children, headerRight }) => (
-  <div className="bg-white border border-slate-200 rounded shadow-sm overflow-hidden">
-    <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+  <div className="bg-[#0b0e17] border border-[#151d2a] rounded overflow-hidden">
+    <div className="px-4 py-3 bg-[#0a0d14] border-b border-[#151d2a] flex items-center justify-between">
       <div>
-        <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">{title}</h3>
-        {subtitle && <p className="text-[11px] text-slate-500 font-mono mt-0.5">{subtitle}</p>}
+        <h3 className="text-xs font-bold text-white uppercase tracking-wide font-mono">{title}</h3>
+        {subtitle && <p className="text-[11px] text-slate-400 font-mono mt-0.5">{subtitle}</p>}
       </div>
       {headerRight}
     </div>
@@ -154,10 +154,10 @@ const TruthfulEmptyState: React.FC<TruthfulEmptyStateProps> = ({
   description,
   icon: Icon = Info
 }) => (
-  <div className="py-6 px-4 bg-slate-50 border border-slate-200 rounded text-center space-y-1.5">
-    <Icon className="w-5 h-5 text-slate-400 mx-auto" />
-    <p className="text-xs font-bold text-slate-700 uppercase tracking-wide">{title}</p>
-    <p className="text-[11px] text-slate-500 max-w-md mx-auto leading-relaxed">{description}</p>
+  <div className="py-6 px-4 bg-[#080b12] border border-[#151d2a] rounded text-center space-y-1.5">
+    <Icon className="w-5 h-5 text-slate-500 mx-auto" />
+    <p className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">{title}</p>
+    <p className="text-[11px] text-slate-500 max-w-md mx-auto leading-relaxed font-mono">{description}</p>
   </div>
 );
 
@@ -657,35 +657,35 @@ export const EntityDossierPage: React.FC = () => {
     <div className="space-y-6 max-w-7xl mx-auto pb-12">
 
       {/* ── Page Header ───────────────────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-start justify-between pb-4 border-b border-slate-200 gap-4">
+      <div className="flex flex-col md:flex-row md:items-start justify-between pb-4 border-b border-[#151d2a] gap-4">
         <div>
           <div className="flex items-center space-x-2 mb-2">
             <button
               onClick={handleBack}
-              className="flex items-center space-x-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 transition-colors"
+              className="flex items-center space-x-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back</span>
             </button>
-            <span className="text-slate-300">/</span>
-            <span className="text-xs text-slate-500">Intelligence Workspace</span>
-            <span className="text-slate-300">/</span>
-            <span className="text-xs text-slate-900 font-bold">Entity Dossier</span>
+            <span className="text-[#1b2333]">/</span>
+            <span className="text-xs text-slate-400 font-mono">Intelligence Workspace</span>
+            <span className="text-[#1b2333]">/</span>
+            <span className="text-xs text-white font-bold font-mono">Entity Dossier</span>
           </div>
 
           <div className="flex items-center space-x-3">
-            <div className={`w-11 h-11 rounded border-2 flex items-center justify-center flex-shrink-0 shadow-sm ${iconBorderClass}`}>
+            <div className={`w-11 h-11 rounded border flex items-center justify-center flex-shrink-0 ${iconBorderClass}`}>
               <EntityIcon className={`w-6 h-6 ${iconColorClass}`} />
             </div>
             <div>
               <div className="flex items-center space-x-2.5">
-                <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">{displayIdentity}</h1>
+                <h1 className="text-2xl font-extrabold text-white tracking-tight font-mono">{displayIdentity}</h1>
                 <span className={`text-[11px] font-mono font-bold px-2.5 py-0.5 rounded border uppercase tracking-wider ${typeBadgeClass}`}>
                   {entityType.replace('_', ' ')}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-mono mt-0.5">
-                Internal Reference: <span className="font-bold text-slate-700">{entity.entity_id}</span>
+              <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+                Internal Reference: <span className="font-bold text-[#BD3535]">{entity.entity_id}</span>
               </p>
             </div>
           </div>
@@ -695,27 +695,27 @@ export const EntityDossierPage: React.FC = () => {
         <div className="flex items-center gap-2 flex-wrap flex-shrink-0">
           <button
             onClick={() => refetchEntity()}
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors shadow-2xs"
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-[#151d2a] border border-[#232f48] rounded hover:bg-[#1b2333] transition-colors font-mono"
             title="Refresh Dossier"
           >
-            <RefreshCw className="w-3.5 h-3.5 text-slate-500" />
+            <RefreshCw className="w-3.5 h-3.5 text-slate-400" />
             <span>Refresh</span>
           </button>
 
           {selectedCaseId ? (
             <button
               onClick={() => navigate(`/cases/${selectedCaseId}/graph`)}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-slate-900 rounded hover:bg-slate-800 transition-colors shadow-2xs"
+              className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-[#BD3535] hover:bg-[#a32828] rounded transition-colors font-mono"
             >
-              <GitFork className="w-3.5 h-3.5 text-amber-500" />
+              <GitFork className="w-3.5 h-3.5" />
               <span>Open Case Graph</span>
             </button>
           ) : (
             <button
               onClick={() => navigate('/cases')}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors shadow-2xs"
+              className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-300 bg-[#151d2a] border border-[#232f48] rounded hover:bg-[#1b2333] transition-colors font-mono"
             >
-              <Briefcase className="w-3.5 h-3.5 text-slate-500" />
+              <Briefcase className="w-3.5 h-3.5 text-slate-400" />
               <span>Select Case Context</span>
             </button>
           )}
@@ -750,8 +750,8 @@ export const EntityDossierPage: React.FC = () => {
               <AttributeRow
                 label="Visibility Status"
                 value={
-                  <span className="inline-flex items-center space-x-1 font-mono font-bold text-emerald-700">
-                    <Eye className="w-3 h-3 text-emerald-600" />
+                  <span className="inline-flex items-center space-x-1 font-mono font-bold text-emerald-400">
+                    <Eye className="w-3 h-3 text-emerald-400" />
                     <span>{entity.visibility_status}</span>
                   </span>
                 }
@@ -772,7 +772,7 @@ export const EntityDossierPage: React.FC = () => {
             title="C2 Identity Resolution"
             subtitle="Deterministic identity candidate links & proposed resolution signals"
             headerRight={
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-amber-50 border-amber-200 text-amber-800">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-amber-950/60 border-amber-800/40 text-amber-300">
                 {matchingCandidates.length} CANDIDATES
               </span>
             }
@@ -780,12 +780,12 @@ export const EntityDossierPage: React.FC = () => {
             {matchingCandidates.length > 0 ? (
               <div className="space-y-4">
                 {/* Mandatory Disclaimer */}
-                <div className="bg-amber-50 border border-amber-200 rounded p-3 space-y-1">
-                  <div className="flex items-center space-x-1.5 text-amber-800 font-bold text-xs">
-                    <ShieldAlert className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                <div className="bg-[#261d0d] border border-amber-500/40 rounded p-3 space-y-1">
+                  <div className="flex items-center space-x-1.5 text-amber-300 font-bold text-xs font-mono">
+                    <ShieldAlert className="w-4 h-4 text-amber-400 flex-shrink-0" />
                     <span>INSTITUTIONAL RESOLUTION DISCLAIMER</span>
                   </div>
-                  <p className="text-[11px] text-amber-900 leading-relaxed font-medium">
+                  <p className="text-[11px] text-amber-200 leading-relaxed font-sans">
                     Identity candidate relationships are proposed deterministic matches. They are <strong>NOT CONFIRMED RESOLUTIONS</strong>.
                     CIVIX strictly enforces that candidate links do not auto-merge entities into a single identity profile without manual supervisor review.
                   </p>
@@ -794,13 +794,13 @@ export const EntityDossierPage: React.FC = () => {
                 {/* Candidate List */}
                 <div className="space-y-3">
                   {matchingCandidates.map((cand) => (
-                    <div key={cand.candidate_id} className="border border-slate-200 rounded bg-slate-50 p-3 space-y-2">
+                    <div key={cand.candidate_id} className="border border-[#151d2a] rounded bg-[#080b12] p-3 space-y-2">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
-                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-amber-100 border-amber-300 text-amber-900">
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-amber-950/60 border-amber-800/40 text-amber-300">
                             POSSIBLE / CANDIDATE
                           </span>
-                          <span className="text-xs font-mono font-bold text-slate-800">{cand.matching_rule_id}</span>
+                          <span className="text-xs font-mono font-bold text-white">{cand.matching_rule_id}</span>
                         </div>
                         <span className="text-[10px] font-mono text-slate-500">
                           {new Date(cand.created_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'short', timeStyle: 'short' })}
@@ -809,20 +809,20 @@ export const EntityDossierPage: React.FC = () => {
 
                       <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-1">
                         <div>
-                          <p className="text-[9px] font-bold text-slate-400 uppercase">Candidate ID</p>
-                          <p className="text-[10px] text-slate-700 truncate">{cand.candidate_id}</p>
+                          <p className="text-[9px] font-bold text-slate-500 uppercase">Candidate ID</p>
+                          <p className="text-[10px] text-slate-300 truncate">{cand.candidate_id}</p>
                         </div>
                         <div>
-                          <p className="text-[9px] font-bold text-slate-400 uppercase">Source Identity ID</p>
-                          <p className="text-[10px] text-slate-700 truncate">{cand.source_identity_id}</p>
+                          <p className="text-[9px] font-bold text-slate-500 uppercase">Source Identity ID</p>
+                          <p className="text-[10px] text-slate-300 truncate">{cand.source_identity_id}</p>
                         </div>
                       </div>
 
                       <div>
-                        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Deterministic Matching Signals</p>
+                        <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1 font-mono">Deterministic Matching Signals</p>
                         <div className="flex flex-wrap gap-1">
                           {cand.deterministic_signals.map((sig) => (
-                            <span key={sig} className="text-[9px] font-mono font-bold px-2 py-0.5 rounded border bg-white border-slate-300 text-slate-700">
+                            <span key={sig} className="text-[9px] font-mono font-bold px-2 py-0.5 rounded border bg-[#0e131d] border-[#1b2333] text-slate-200">
                               {sig}
                             </span>
                           ))}
@@ -831,10 +831,10 @@ export const EntityDossierPage: React.FC = () => {
 
                       {cand.supporting_evidence_ids && cand.supporting_evidence_ids.length > 0 && (
                         <div className="pt-1">
-                          <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Supporting Evidence IDs</p>
+                          <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1 font-mono">Supporting Evidence IDs</p>
                           <div className="flex flex-wrap gap-1">
                             {cand.supporting_evidence_ids.map((eid) => (
-                              <span key={eid} className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-200 text-slate-700">
+                              <span key={eid} className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#151d2a] text-slate-300 border border-[#232f48]">
                                 {eid.substring(0, 8)}...
                               </span>
                             ))}
@@ -858,7 +858,7 @@ export const EntityDossierPage: React.FC = () => {
             title="Entity Relationships"
             subtitle={selectedCaseId ? `Traversed relationships in Case ${selectedCaseId.substring(0, 8)}...` : 'Graph traversal requires an active case context'}
             headerRight={
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-blue-50 border-blue-200 text-blue-800">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-blue-950/60 border-blue-800/40 text-blue-300">
                 {entityRelationships.length} LINKS
               </span>
             }
@@ -873,7 +873,7 @@ export const EntityDossierPage: React.FC = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-slate-200 bg-slate-50 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                    <tr className="border-b border-[#151d2a] bg-[#0a0d14] text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
                       <th className="py-2 px-3">Connected Entity</th>
                       <th className="py-2 px-3">Relationship</th>
                       <th className="py-2 px-3">Status / Epistemic</th>
@@ -881,46 +881,46 @@ export const EntityDossierPage: React.FC = () => {
                       <th className="py-2 px-3 text-right">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 text-xs">
+                  <tbody className="divide-y divide-[#151d2a] text-xs">
                     {entityRelationships.map((rel) => (
-                      <tr key={rel.id} className="hover:bg-slate-50/80 transition-colors">
+                      <tr key={rel.id} className="hover:bg-[#0e131d] transition-colors">
                         <td className="py-2.5 px-3">
                           <div className="flex items-center space-x-2">
-                            <span className={`text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border ${ENTITY_COLOR_CLASS[rel.targetType] || 'bg-slate-100 border-slate-300 text-slate-700'}`}>
+                            <span className={`text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border ${ENTITY_COLOR_CLASS[rel.targetType] || 'bg-[#151d2a] border-[#232f48] text-slate-300'}`}>
                               {rel.targetType}
                             </span>
-                            <span className="font-bold text-slate-900">{rel.targetName}</span>
+                            <span className="font-bold text-white">{rel.targetName}</span>
                           </div>
                         </td>
                         <td className="py-2.5 px-3">
                           <div>
-                            <span className="font-semibold text-slate-800">{rel.predicate}</span>
-                            <span className="text-[10px] font-mono text-slate-400 block">{rel.rawPredicate}</span>
+                            <span className="font-semibold text-slate-200">{rel.predicate}</span>
+                            <span className="text-[10px] font-mono text-slate-500 block">{rel.rawPredicate}</span>
                           </div>
                         </td>
                         <td className="py-2.5 px-3">
                           {rel.isCandidate ? (
-                            <span className="inline-flex items-center text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border bg-amber-50 border-amber-200 text-amber-800">
+                            <span className="inline-flex items-center text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border bg-amber-950/60 border-amber-800/40 text-amber-300">
                               CANDIDATE
                             </span>
                           ) : rel.epistemicStatus ? (
-                            <span className="inline-flex items-center text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border bg-emerald-50 border-emerald-200 text-emerald-800">
+                            <span className="inline-flex items-center text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border bg-emerald-950/60 border-emerald-800/40 text-emerald-300">
                               {rel.epistemicStatus}
                             </span>
                           ) : (
-                            <span className="text-[10px] font-mono text-slate-400">EVIDENCE-BACKED</span>
+                            <span className="text-[10px] font-mono text-slate-500">EVIDENCE-BACKED</span>
                           )}
                         </td>
-                        <td className="py-2.5 px-3 font-mono text-[10px] text-slate-500">
+                        <td className="py-2.5 px-3 font-mono text-[10px] text-slate-400">
                           {rel.assertionId ? `Assertion: ${rel.assertionId.substring(0, 8)}...` : 'Neo4j Projection'}
                         </td>
                         <td className="py-2.5 px-3 text-right">
                           <button
                             onClick={() => navigate(`/entities/${rel.targetId}`)}
-                            className="inline-flex items-center space-x-1 text-[11px] font-semibold text-blue-700 hover:text-blue-900 transition-colors"
+                            className="inline-flex items-center space-x-1 text-[11px] font-semibold text-blue-400 hover:text-blue-300 transition-colors font-mono"
                           >
                             <span>Dossier</span>
-                            <ChevronRight className="w-3 h-3" />
+                            <ChevronRight className="w-3 h-3 text-[#BD3535]" />
                           </button>
                         </td>
                       </tr>
@@ -941,7 +941,7 @@ export const EntityDossierPage: React.FC = () => {
             title="Investigative Lead Signals (C3 Engine)"
             subtitle="Automated findings, behavioral model signals, and explanation trace"
             headerRight={
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-purple-50 border-purple-200 text-purple-800">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-purple-950/60 border-purple-800/40 text-purple-300">
                 {targetLeads.length} LEADS
               </span>
             }
@@ -959,35 +959,35 @@ export const EntityDossierPage: React.FC = () => {
                   const scoreFormatted = lead.ai_confidence != null ? (lead.ai_confidence * 100).toFixed(1) + '%' : 'N/A';
 
                   return (
-                    <div key={lead.lead_id} className="border border-slate-200 rounded bg-white shadow-2xs overflow-hidden">
+                    <div key={lead.lead_id} className="border border-[#151d2a] rounded bg-[#080b12] overflow-hidden">
                       {/* Lead Summary Bar */}
-                      <div className="p-3.5 bg-slate-50/80 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-2">
+                      <div className="p-3.5 bg-[#0a0d14] border-b border-[#151d2a] flex flex-col md:flex-row md:items-center justify-between gap-2">
                         <div className="space-y-1">
                           <div className="flex items-center space-x-2">
                             <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${
-                              lead.priority === 'HIGH' ? 'bg-red-50 border-red-200 text-red-800' :
-                              lead.priority === 'MEDIUM' ? 'bg-amber-50 border-amber-200 text-amber-800' :
-                              'bg-slate-100 border-slate-300 text-slate-700'
+                              lead.priority === 'HIGH' ? 'bg-[#2d0e12] border-[#BD3535]/40 text-red-300' :
+                              lead.priority === 'MEDIUM' ? 'bg-amber-950/60 border-amber-800/40 text-amber-300' :
+                              'bg-[#151d2a] border-[#232f48] text-slate-300'
                             }`}>
                               {lead.priority} PRIORITY
                             </span>
-                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-slate-100 border-slate-200 text-slate-700">
+                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-[#0e131d] border-[#1b2333] text-slate-300">
                               STATUS: {lead.status}
                             </span>
-                            <span className="text-[10px] font-mono text-slate-400">ID: {lead.lead_id.substring(0, 8)}...</span>
+                            <span className="text-[10px] font-mono text-slate-500">ID: {lead.lead_id.substring(0, 8)}...</span>
                           </div>
-                          <p className="text-xs font-bold text-slate-900 leading-snug">{lead.lead_text}</p>
+                          <p className="text-xs font-bold text-white leading-snug">{lead.lead_text}</p>
                         </div>
 
                         {/* Model Signal Badge (STRICT TERMINOLOGY: NOT 'CONFIDENCE') */}
                         <div className="flex items-center space-x-3 flex-shrink-0">
                           <div className="text-right">
-                            <p className="text-[9px] font-bold text-purple-700 uppercase tracking-widest">MODEL SIGNAL</p>
-                            <p className="text-sm font-extrabold font-mono text-purple-900">{scoreFormatted}</p>
+                            <p className="text-[9px] font-bold text-purple-400 uppercase tracking-widest font-mono">MODEL SIGNAL</p>
+                            <p className="text-sm font-extrabold font-mono text-white">{scoreFormatted}</p>
                           </div>
                           <button
                             onClick={() => setExpandedLeadId(isExpanded ? null : lead.lead_id)}
-                            className="p-1.5 text-slate-500 hover:text-slate-900 bg-white border border-slate-200 rounded transition-colors"
+                            className="p-1.5 text-slate-400 hover:text-white bg-[#151d2a] border border-[#232f48] rounded transition-colors"
                           >
                             {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                           </button>
@@ -995,39 +995,39 @@ export const EntityDossierPage: React.FC = () => {
                       </div>
 
                       {/* CIVIX Canonical Intelligence Hierarchy */}
-                      <div className="p-3.5 bg-white text-xs space-y-3">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] font-mono border-b border-slate-100 pb-2.5">
+                      <div className="p-3.5 bg-[#080b12] text-xs space-y-3">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] font-mono border-b border-[#151d2a] pb-2.5">
                           <div>
-                            <span className="text-slate-400 block uppercase">1. Source Evidence</span>
-                            <span className="font-bold text-slate-700">CDR / Case Registry</span>
+                            <span className="text-slate-500 block uppercase">1. Source Evidence</span>
+                            <span className="font-bold text-slate-200">CDR / Case Registry</span>
                           </div>
                           <div>
-                            <span className="text-slate-400 block uppercase">2. Findings Count</span>
-                            <span className="font-bold text-slate-700">{lead.finding_count ?? 0} Deterministic</span>
+                            <span className="text-slate-500 block uppercase">2. Findings Count</span>
+                            <span className="font-bold text-slate-200">{lead.finding_count ?? 0} Deterministic</span>
                           </div>
                           <div>
-                            <span className="text-slate-400 block uppercase">3. Model Signal</span>
-                            <span className="font-bold text-purple-800">Behavioral Score</span>
+                            <span className="text-slate-500 block uppercase">3. Model Signal</span>
+                            <span className="font-bold text-purple-400">Behavioral Score</span>
                           </div>
                           <div>
-                            <span className="text-slate-400 block uppercase">4. Explanation</span>
-                            <span className="font-bold text-slate-700">{lead.explanation_status || 'NOT_RUN'}</span>
+                            <span className="text-slate-500 block uppercase">4. Explanation</span>
+                            <span className="font-bold text-slate-200">{lead.explanation_status || 'NOT_RUN'}</span>
                           </div>
                         </div>
 
                         {/* Detailed findings trace if expanded */}
                         {isExpanded && (
-                          <div className="pt-1 space-y-2 bg-slate-50 p-3 rounded border border-slate-200 text-[11px]">
-                            <p className="font-bold text-slate-800 uppercase tracking-wide text-[10px]">C3 Lead Trace Details</p>
-                            <p className="text-slate-600 leading-relaxed font-sans">
-                              Feature Vector Version: <span className="font-mono text-slate-800">{lead.feature_vector_version || 'v1.0'}</span>
+                          <div className="pt-1 space-y-2 bg-[#0b0e17] p-3 rounded border border-[#1b2333] text-[11px]">
+                            <p className="font-bold text-slate-200 uppercase tracking-wide text-[10px] font-mono">C3 Lead Trace Details</p>
+                            <p className="text-slate-300 leading-relaxed font-sans">
+                              Feature Vector Version: <span className="font-mono text-white">{lead.feature_vector_version || 'v1.0'}</span>
                             </p>
                             <div className="pt-2 flex items-center space-x-2">
                               <button
                                 onClick={() => navigate(`/cases/${selectedCaseId}`)}
-                                className="flex items-center space-x-1.5 px-3 py-1 text-xs font-semibold text-white bg-slate-900 rounded hover:bg-slate-800 transition-colors"
+                                className="flex items-center space-x-1.5 px-3 py-1 text-xs font-semibold text-white bg-[#BD3535] hover:bg-[#a32828] rounded transition-colors font-mono"
                               >
-                                <ExternalLink className="w-3 h-3 text-amber-500" />
+                                <ExternalLink className="w-3 h-3 text-white" />
                                 <span>Inspect in Case Workspace</span>
                               </button>
                             </div>
@@ -1059,33 +1059,33 @@ export const EntityDossierPage: React.FC = () => {
             {caseInvolvementList.length > 0 ? (
               <div className="space-y-3">
                 {caseInvolvementList.map((c) => (
-                  <div key={c.case_id} className="border border-slate-200 rounded p-3 bg-slate-50/80 space-y-2">
+                  <div key={c.case_id} className="border border-[#151d2a] rounded p-3 bg-[#080b12] space-y-2">
                     <div className="flex items-start justify-between">
                       <div>
-                        <span className="text-[10px] font-mono font-bold bg-slate-900 text-white px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-mono font-bold bg-[#BD3535] text-white px-2 py-0.5 rounded">
                           {c.case_number}
                         </span>
-                        <h4 className="text-xs font-bold text-slate-900 mt-1 leading-snug">{c.title}</h4>
+                        <h4 className="text-xs font-bold text-white mt-1 leading-snug">{c.title}</h4>
                       </div>
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-red-50 border-red-200 text-red-800">
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-[#2d0e12] border-[#BD3535]/40 text-red-300">
                         {c.role}
                       </span>
                     </div>
 
                     {c.role_basis && (
-                      <p className="text-[11px] text-slate-600 font-sans italic leading-tight">
+                      <p className="text-[11px] text-slate-400 font-sans italic leading-tight">
                         "{c.role_basis}"
                       </p>
                     )}
 
-                    <div className="pt-1 flex items-center justify-between border-t border-slate-200/60 text-[10px] font-mono text-slate-500">
+                    <div className="pt-1 flex items-center justify-between border-t border-[#151d2a] text-[10px] font-mono text-slate-400">
                       <span>Jurisdiction: {c.jurisdiction}</span>
                       <button
                         onClick={() => navigate(`/cases/${c.case_id}`)}
-                        className="font-bold text-blue-700 hover:text-blue-900 transition-colors flex items-center space-x-1"
+                        className="font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center space-x-1 font-mono"
                       >
                         <span>Open Case</span>
-                        <ChevronRight className="w-3 h-3" />
+                        <ChevronRight className="w-3 h-3 text-[#BD3535]" />
                       </button>
                     </div>
                   </div>
@@ -1113,28 +1113,28 @@ export const EntityDossierPage: React.FC = () => {
             ) : (evidenceData || []).length > 0 ? (
               <div className="space-y-2">
                 {(evidenceData || []).map((art) => (
-                  <div key={art.artifact_id} className="border border-slate-200 rounded p-2.5 bg-white space-y-1 text-xs">
+                  <div key={art.artifact_id} className="border border-[#151d2a] rounded p-2.5 bg-[#080b12] space-y-1 text-xs">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-800 truncate max-w-[180px]" title={art.original_filename}>
+                      <span className="font-bold text-white truncate max-w-[180px]" title={art.original_filename}>
                         {art.original_filename || 'Evidence File'}
                       </span>
                       <span className={`text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border ${
-                        art.processing_status === 'COMPLETED' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' :
-                        art.processing_status === 'FAILED' ? 'bg-red-50 border-red-200 text-red-800' :
-                        art.processing_status === 'PROCESSING' ? 'bg-blue-50 border-blue-200 text-blue-800' :
-                        'bg-slate-100 border-slate-200 text-slate-700'
+                        art.processing_status === 'COMPLETED' ? 'bg-[#0b1f14] border-emerald-500/40 text-emerald-400' :
+                        art.processing_status === 'FAILED' ? 'bg-[#2d0e12] border-[#BD3535]/40 text-red-300' :
+                        art.processing_status === 'PROCESSING' ? 'bg-blue-950/60 border-blue-800/40 text-blue-300' :
+                        'bg-[#151d2a] border-[#232f48] text-slate-300'
                       }`}>
                         {art.processing_status}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-500">
                       <span>{art.mime_type || 'binary/octet-stream'}</span>
                       <span>{art.file_size_bytes ? (art.file_size_bytes / 1024).toFixed(1) + ' KB' : 'N/A'}</span>
                     </div>
 
                     {art.processing_status === 'FAILED' && (
-                      <div className="mt-1 p-1.5 bg-red-50 border border-red-200 rounded text-[10px] text-red-800 font-mono">
+                      <div className="mt-1 p-1.5 bg-[#2d0e12] border border-[#BD3535]/40 rounded text-[10px] text-red-300 font-mono">
                         FAILED_NLP: Text extraction failed or mime type unsupported.
                       </div>
                     )}
@@ -1155,15 +1155,15 @@ export const EntityDossierPage: React.FC = () => {
             subtitle="Record origin & access control scope"
           >
             <div className="space-y-2.5 text-xs">
-              <div className="bg-slate-50 border border-slate-200 rounded p-3 space-y-2">
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Why does CIVIX know this entity?</p>
-                <p className="text-[11px] text-slate-700 leading-relaxed font-sans">
-                  This entity record exists in PostgreSQL table <code className="font-mono text-slate-900 bg-slate-200 px-1 py-0.5 rounded">civix.entity</code> and is indexed in the global intelligence network.
+              <div className="bg-[#080b12] border border-[#151d2a] rounded p-3 space-y-2">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide font-mono">Why does CIVIX know this entity?</p>
+                <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                  This entity record exists in PostgreSQL table <code className="font-mono text-[#BD3535] bg-[#151d2a] px-1 py-0.5 rounded">civix.entity</code> and is indexed in the global intelligence network.
                 </p>
-                <div className="space-y-1 pt-1 text-[10px] font-mono text-slate-500 border-t border-slate-200">
-                  <p>RLS Access: <span className="font-bold text-slate-700">READ / WRITE Granted</span></p>
-                  <p>Visibility Status: <span className="font-bold text-emerald-700">{entity.visibility_status}</span></p>
-                  <p>Ingestion Time: <span>{new Date(entity.created_at).toISOString()}</span></p>
+                <div className="space-y-1 pt-1 text-[10px] font-mono text-slate-400 border-t border-[#151d2a]">
+                  <p>RLS Access: <span className="font-bold text-emerald-400">READ / WRITE Granted</span></p>
+                  <p>Visibility Status: <span className="font-bold text-emerald-400">{entity.visibility_status}</span></p>
+                  <p>Ingestion Time: <span className="text-slate-300">{new Date(entity.created_at).toISOString()}</span></p>
                 </div>
               </div>
             </div>

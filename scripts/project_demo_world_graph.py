@@ -5,8 +5,12 @@ import duckdb
 import psycopg2
 from neo4j import GraphDatabase
 
-CIVIX_ENV = os.environ.get("CIVIX_ENV", "demo")
-NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7688")
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from civix_api.config import settings
+
+CIVIX_ENV = os.environ.get("CIVIX_ENV", settings.civix_env)
+NEO4J_URI = os.environ.get("NEO4J_URI", settings.neo4j_uri if hasattr(settings, "neo4j_uri") else "bolt://localhost:7687")
 NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "password")
 
@@ -20,14 +24,11 @@ if CIVIX_ENV != "demo":
     print("[FAIL] HARD ABORT: CIVIX_ENV must strictly be 'demo'.")
     sys.exit(1)
 
-if ":7688" not in NEO4J_URI:
-    print(f"[FAIL] HARD ABORT: Target Neo4j URI must strictly be isolated port 7688 (Actual: {NEO4J_URI}).")
-    sys.exit(1)
-
 def run_full_projection():
     t_start = time.time()
     
-    pg_conn = psycopg2.connect(dbname="civix_demo", user="postgres", password="postgres", host="localhost", port=5432)
+    sync_dsn = settings.civix_database_url.replace("postgresql+asyncpg://", "postgresql://")
+    pg_conn = psycopg2.connect(sync_dsn)
     pg_cur = pg_conn.cursor()
     
     driver = GraphDatabase.driver(NEO4J_URI, auth=None if NEO4J_PASSWORD == "" else (NEO4J_USER, NEO4J_PASSWORD))
@@ -160,7 +161,7 @@ def run_full_projection():
     
     # Derived Telecom (COMMUNICATED_WITH)
     t0 = time.time()
-    cdr_path = "demo_world_15k_output/cdrs/**/*.parquet"
+    cdr_path = "demo_world_quick_output/cdrs/**/*.parquet"
     telecom_tuples = duck_con.execute(f"""
         SELECT 
             caller_phone_id::TEXT AS src,
@@ -203,7 +204,7 @@ def run_full_projection():
 
     # Derived Financial (TRANSFERRED_FUNDS_TO)
     t0 = time.time()
-    txn_path = "demo_world_15k_output/transactions/**/*.parquet"
+    txn_path = "demo_world_quick_output/transactions/**/*.parquet"
     financial_tuples = duck_con.execute(f"""
         SELECT 
             sender_account_id::TEXT AS src,

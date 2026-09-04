@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppShell } from '../components/layouts/AppShell';
 import { CaseSelectionProvider } from '../context/CaseSelectionContext';
 import { CommandCenterPage } from '../pages/CommandCenterPage';
@@ -25,6 +25,9 @@ export const AppRouter: React.FC = () => {
             <Route path="/spatial" element={<SpatialIntelligencePage />} />
             <Route path="/cctv" element={<CCTVCommandCenterPage />} />
             <Route path="/entities/:entityId" element={<EntityDossierPage />} />
+            <Route path="/entities" element={<Navigate to="/cases" replace />} />
+            <Route path="/evidence" element={<Navigate to="/cases" replace />} />
+            <Route path="/leads" element={<Navigate to="/cases" replace />} />
             <Route path="*" element={<CommandCenterPage />} />
           </Routes>
         </AppShell>

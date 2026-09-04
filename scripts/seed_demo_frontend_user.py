@@ -1,11 +1,17 @@
-import psycopg2
+import psycopg
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 def seed_demo_frontend_user():
     print("==========================================================")
     print("SEEDING FRONTEND DEV USER & CASE ACCESS IN CIVIX_DEMO")
     print("==========================================================")
     
-    conn = psycopg2.connect(dbname="civix_demo", user="postgres", password="postgres", host="localhost", port=5432)
+    from civix_api.config import settings
+    import psycopg
+    sync_dsn = settings.civix_database_url.replace("postgresql+asyncpg://", "postgresql://")
+    conn = psycopg.connect(sync_dsn, autocommit=True)
     cur = conn.cursor()
     
     dev_user_id = "55284c17-1d58-461f-94f5-86c2a5215100"

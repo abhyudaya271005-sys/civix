@@ -1,0 +1,36 @@
+{
+  "profile": "dev_cases",
+  "seed": 42,
+  "started_at": 1788507295,
+  "completed_stages": [
+    "locations",
+    "cell_sectors",
+    "persons",
+    "organisations",
+    "phones",
+    "sims",
+    "devices",
+    "cdrs",
+    "accounts",
+    "transactions",
+    "cases",
+    "case_entity_roles",
+    "ground_truth"
+  ],
+  "shard_progress": {},
+  "row_counts": {
+    "locations": 50,
+    "cell_sectors": 20,
+    "persons": 500,
+    "organisations": 50,
+    "phones": 500,
+    "sims": 500,
+    "devices": 200,
+    "cdrs": 1000,
+    "accounts": 200,
+    "transactions": 650,
+    "cases": 25,
+    "case_entity_roles": 132,
+    "ground_truth": 500
+  }
+}

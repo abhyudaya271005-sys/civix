@@ -108,7 +108,9 @@ def load_to_postgres(output_dir: str):
     assert_golden_protection()
     
     t_start = time.time()
-    pg_conn = psycopg2.connect(dbname=EXPECTED_DB, user="postgres", password="postgres", host="localhost", port=5432)
+    from civix_api.config import settings
+    sync_dsn = settings.civix_database_url.replace("postgresql+asyncpg://", "postgresql://")
+    pg_conn = psycopg2.connect(sync_dsn)
     pg_conn.autocommit = True
     pg_cur = pg_conn.cursor()
 

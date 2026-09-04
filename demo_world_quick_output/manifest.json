@@ -1,0 +1,150 @@
+{
+  "dataset_version": "profile_dev_cases_v1",
+  "generator_version": "2.0.0",
+  "schema_version": "civix-2.1",
+  "scenario_catalog_version": "1.0",
+  "profile": "dev_cases",
+  "seed": 42,
+  "configuration_hash": "89c3817df5ecba8b966a6db60e23ff0159b40670079db0228ee5be7546678eaa",
+  "generation_timestamp": "2026-09-04T07:34:55Z",
+  "generation_duration_seconds": 1,
+  "row_counts": {
+    "locations": 50,
+    "cell_sectors": 20,
+    "persons": 500,
+    "organisations": 50,
+    "phones": 500,
+    "sims": 500,
+    "devices": 200,
+    "cdrs": 1000,
+    "accounts": 200,
+    "transactions": 650,
+    "cases": 25,
+    "case_entity_roles": 132,
+    "person_labels": 500,
+    "train_val_test_split": 500
+  },
+  "total_rows": 4827,
+  "files": [
+    {
+      "path": "demo_world_quick_output\\locations\\part-00000.parquet",
+      "rows": 50,
+      "bytes": 6161,
+      "sha256": "29ba0b2bc3338cac05c6ba0a9be9e994d8b70e6a43197f234ad213176590c4e9",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\cell_sectors\\part-00000.parquet",
+      "rows": 20,
+      "bytes": 4854,
+      "sha256": "4fe0e1b9690bbe368c4f9f3f6857ef6cb7c52b55e58db5d4247c45675047f2b5",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\persons\\part-00000.parquet",
+      "rows": 500,
+      "bytes": 38172,
+      "sha256": "7da7290fa28d004271b7b9b117e309264798efc823652c3d4a98066d5e5cd5a6",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\organisations\\part-00000.parquet",
+      "rows": 50,
+      "bytes": 4643,
+      "sha256": "e812daf068d59fc71c9670b45a3621c223f15a1bf16f7ca99b65e9035316a82c",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\phones\\part-00000.parquet",
+      "rows": 500,
+      "bytes": 29703,
+      "sha256": "de8524358cc670e6019b121109dd7851c47796a6a5e86df2ed45f33d100eb5f3",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\sims\\part-00000.parquet",
+      "rows": 500,
+      "bytes": 31458,
+      "sha256": "1d492ae18b5ee7f8eab02b82a32ef99841523a1b3a10b973600bb089be30699e",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\devices\\part-00000.parquet",
+      "rows": 200,
+      "bytes": 14251,
+      "sha256": "9e2a989b407880b338960edf90bddd6cbb2ef7062f5820d3c98b891c7994589c",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\cdrs\\year=2026\\month=4\\part-00000.parquet",
+      "rows": 1000,
+      "bytes": 79293,
+      "sha256": "b04764f26e1a3fab6637db8a88c1e715f24790eaf289352e93d3ae1d2060f1b1",
+      "partition": {
+        "year": 2026,
+        "month": 4
+      },
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\accounts\\part-00000.parquet",
+      "rows": 200,
+      "bytes": 21096,
+      "sha256": "1be57759e5fe202fb5e09c122681fbb02ab4600ff14308fc88a6acaacc50a663",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\transactions\\year=2026\\month=1\\part-00000.parquet",
+      "rows": 650,
+      "bytes": 75230,
+      "sha256": "3e54a516aff2502312db0521845f1d0036cb25026f1859519621507a8b327bc6",
+      "partition": {
+        "year": 2026,
+        "month": 1
+      },
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\cases\\part-00000.parquet",
+      "rows": 25,
+      "bytes": 10038,
+      "sha256": "becd1868969dc770a637d8d4034b0b557517564f23108165957ab95dee9db22c",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\case_entity_roles\\part-00000.parquet",
+      "rows": 132,
+      "bytes": 12754,
+      "sha256": "a94c19312c2e43fb0ef46546b8ca4b51e2da43e6307331e46df79bdf684de1a1",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\ground_truth\\person_labels\\part-00000.parquet",
+      "rows": 500,
+      "bytes": 32021,
+      "sha256": "87fb6ebad2df4ce636deb43f70f35a3b4a7767da5cbf3b7ed45e02d8215f2d79",
+      "partition": {},
+      "shard_index": 0
+    },
+    {
+      "path": "demo_world_quick_output\\ground_truth\\train_val_test_split\\part-00000.parquet",
+      "rows": 500,
+      "bytes": 23996,
+      "sha256": "72aaaca6aa1f9cb477ef693bb5dc0f7dd56278d082c382dd0815f63b0c7cba9a",
+      "partition": {},
+      "shard_index": 0
+    }
+  ],
+  "total_files": 14,
+  "total_bytes": 383670
+}

@@ -1,14 +1,18 @@
 import React, { useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import type { SpatialCaseFeature } from '../../api/spatial';
-import { Shield, Scale, AlertCircle, Briefcase } from 'lucide-react';
+import { useCaseSelection } from '../../context/CaseSelectionContext';
+import { Shield, Scale, AlertCircle, Briefcase, ArrowRight, MapPin } from 'lucide-react';
 
 interface NCRInvestigationMapProps {
   cases: SpatialCaseFeature[];
   selectedCaseId: string | null;
   onSelectCase: (caseId: string) => void;
+  onInspectCase?: (caseId: string) => void;
+  onOpenEventMap?: (caseId: string) => void;
 }
 
 const getMarkerColor = (status: string, priority: string): { bg: string; border: string; ring: string } => {
@@ -70,6 +74,13 @@ const MapController: React.FC<{ cases: SpatialCaseFeature[]; selectedId: string 
         const [lon, lat] = selected.geometry.coordinates;
         map.flyTo([lat, lon], 14, { duration: 1.2 });
       }
+    } else if (cases.length > 0) {
+      const validPoints = cases
+        .filter(c => c.geometry && Array.isArray(c.geometry.coordinates))
+        .map(c => [c.geometry.coordinates[1], c.geometry.coordinates[0]] as [number, number]);
+      if (validPoints.length > 0) {
+        map.fitBounds(validPoints, { padding: [40, 40] });
+      }
     }
   }, [selectedId, cases, map]);
 
@@ -79,8 +90,23 @@ const MapController: React.FC<{ cases: SpatialCaseFeature[]; selectedId: string 
 export const NCRInvestigationMap: React.FC<NCRInvestigationMapProps> = ({
   cases,
   selectedCaseId,
-  onSelectCase
+  onSelectCase,
+  onInspectCase,
+  onOpenEventMap
 }) => {
+  const navigate = useNavigate();
+  const { setSelectedCaseId } = useCaseSelection();
+
+  const handleInspect = (caseId: string) => {
+    onSelectCase(caseId);
+    setSelectedCaseId(caseId);
+    if (onInspectCase) {
+      onInspectCase(caseId);
+    } else {
+      navigate(`/cases/${caseId}`);
+    }
+  };
+
   const center: [number, number] = [28.6139, 77.2090]; // Delhi NCR Operational Center
 
   // Compute dynamic case counts from actual API response array
@@ -103,6 +129,24 @@ export const NCRInvestigationMap: React.FC<NCRInvestigationMapProps> = ({
     });
 
     return { critical, high, medium, low, closed };
+  }, [cases]);
+
+  // Compute dynamic case type counts from actual API response array
+  const typeCounts = useMemo(() => {
+    let financial = 0;
+    let criminal = 0;
+    let intelligence = 0;
+    let multiCase = 0;
+
+    cases.forEach(c => {
+      const t = c.properties.case_type || '';
+      if (t.includes('FINANCIAL') || t.includes('FRAUD')) financial++;
+      else if (t.includes('CRIMINAL') || t.includes('ORGANIZED_CRIME')) criminal++;
+      else if (t.includes('INTELLIGENCE')) intelligence++;
+      else multiCase++;
+    });
+
+    return { financial, criminal, intelligence, multiCase };
   }, [cases]);
 
   return (
@@ -158,21 +202,33 @@ export const NCRInvestigationMap: React.FC<NCRInvestigationMapProps> = ({
           CASE TYPE
         </h4>
         <div className="space-y-1 text-[11px] text-slate-600">
-          <div className="flex items-center space-x-1.5">
-            <Scale className="w-3 h-3 text-slate-500" />
-            <span>Financial</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1.5">
+              <Scale className="w-3 h-3 text-slate-500" />
+              <span>Financial</span>
+            </div>
+            <span className="font-mono text-[11px] font-semibold text-slate-900">({typeCounts.financial})</span>
           </div>
-          <div className="flex items-center space-x-1.5">
-            <Shield className="w-3 h-3 text-slate-500" />
-            <span>Criminal</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1.5">
+              <Shield className="w-3 h-3 text-slate-500" />
+              <span>Criminal</span>
+            </div>
+            <span className="font-mono text-[11px] font-semibold text-slate-900">({typeCounts.criminal})</span>
           </div>
-          <div className="flex items-center space-x-1.5">
-            <AlertCircle className="w-3 h-3 text-slate-500" />
-            <span>Intelligence</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1.5">
+              <AlertCircle className="w-3 h-3 text-slate-500" />
+              <span>Intelligence</span>
+            </div>
+            <span className="font-mono text-[11px] font-semibold text-slate-900">({typeCounts.intelligence})</span>
           </div>
-          <div className="flex items-center space-x-1.5">
-            <Briefcase className="w-3 h-3 text-slate-500" />
-            <span>Multi-Case</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1.5">
+              <Briefcase className="w-3 h-3 text-slate-500" />
+              <span>Multi-Case</span>
+            </div>
+            <span className="font-mono text-[11px] font-semibold text-slate-900">({typeCounts.multiCase})</span>
           </div>
         </div>
       </div>
@@ -218,12 +274,29 @@ export const NCRInvestigationMap: React.FC<NCRInvestigationMapProps> = ({
                     </span>
                     <span className="text-[10px] text-slate-500 font-mono">{status}</span>
                   </div>
-                  <button
-                    onClick={() => onSelectCase(case_id)}
-                    className="mt-2.5 w-full bg-[#1a3a6c] hover:bg-[#132c54] text-white text-[11px] font-semibold py-1 px-2 rounded transition-colors"
-                  >
-                    Inspect Case
-                  </button>
+                  <div className="flex flex-col gap-1.5 mt-2.5">
+                    <button
+                      type="button"
+                      onClick={() => handleInspect(case_id)}
+                      className="w-full bg-[#BD3535] hover:bg-[#962626] text-white text-[11px] font-semibold py-1.5 px-3 rounded transition-colors flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs"
+                    >
+                      <span>Inspect Case</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-white/90" />
+                    </button>
+                    {onOpenEventMap && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onSelectCase(case_id);
+                          onOpenEventMap(case_id);
+                        }}
+                        className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-medium py-1 px-2 rounded transition-colors border border-slate-300 cursor-pointer flex items-center justify-center space-x-1"
+                      >
+                        <span>View Spatial Events</span>
+                        <MapPin className="w-3 h-3 text-[#BD3535]" />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </Popup>
             </Marker>

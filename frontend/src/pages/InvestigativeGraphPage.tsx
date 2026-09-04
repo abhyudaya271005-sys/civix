@@ -57,113 +57,113 @@ interface NodeTypeConfig {
 
 const NODE_TYPE_CONFIG: Record<string, NodeTypeConfig> = {
   Person: {
-    color: '#dbeafe',
-    borderColor: '#1d4ed8',
-    textColor: '#1e3a8a',
+    color: '#172554',
+    borderColor: '#3b82f6',
+    textColor: '#93c5fd',
     icon: User,
-    iconClass: 'text-blue-700',
-    badgeClass: 'bg-blue-50 border-blue-200 text-blue-800',
+    iconClass: 'text-blue-400',
+    badgeClass: 'bg-blue-950/60 border-blue-800 text-blue-300',
     displayLabel: 'PERSON',
   },
   Organization: {
-    color: '#fef3c7',
-    borderColor: '#d97706',
-    textColor: '#78350f',
+    color: '#451a03',
+    borderColor: '#f59e0b',
+    textColor: '#fde68a',
     icon: Building2,
-    iconClass: 'text-amber-700',
-    badgeClass: 'bg-amber-50 border-amber-200 text-amber-800',
+    iconClass: 'text-amber-400',
+    badgeClass: 'bg-amber-950/60 border-amber-800 text-amber-300',
     displayLabel: 'ORGANIZATION',
   },
   Device: {
-    color: '#ede9fe',
-    borderColor: '#7c3aed',
-    textColor: '#4c1d95',
+    color: '#2e1065',
+    borderColor: '#a855f7',
+    textColor: '#d8b4fe',
     icon: Smartphone,
-    iconClass: 'text-purple-700',
-    badgeClass: 'bg-purple-50 border-purple-200 text-purple-800',
+    iconClass: 'text-purple-400',
+    badgeClass: 'bg-purple-950/60 border-purple-800 text-purple-300',
     displayLabel: 'DEVICE',
   },
   PhoneNumber: {
-    color: '#d1fae5',
-    borderColor: '#059669',
-    textColor: '#064e3b',
+    color: '#064e3b',
+    borderColor: '#10b981',
+    textColor: '#a7f3d0',
     icon: Phone,
-    iconClass: 'text-emerald-700',
-    badgeClass: 'bg-emerald-50 border-emerald-200 text-emerald-800',
+    iconClass: 'text-emerald-400',
+    badgeClass: 'bg-emerald-950/60 border-emerald-800 text-emerald-300',
     displayLabel: 'PHONE NUMBER',
   },
   Vehicle: {
-    color: '#fee2e2',
-    borderColor: '#dc2626',
-    textColor: '#7f1d1d',
+    color: '#450a0a',
+    borderColor: '#ef4444',
+    textColor: '#fca5a5',
     icon: Car,
-    iconClass: 'text-red-700',
-    badgeClass: 'bg-red-50 border-red-200 text-red-800',
+    iconClass: 'text-red-400',
+    badgeClass: 'bg-red-950/60 border-red-800 text-red-300',
     displayLabel: 'VEHICLE',
   },
   FinancialAccount: {
-    color: '#fef9c3',
-    borderColor: '#ca8a04',
-    textColor: '#713f12',
+    color: '#422006',
+    borderColor: '#eab308',
+    textColor: '#fef08a',
     icon: CreditCard,
-    iconClass: 'text-yellow-700',
-    badgeClass: 'bg-yellow-50 border-yellow-200 text-yellow-800',
+    iconClass: 'text-yellow-400',
+    badgeClass: 'bg-yellow-950/60 border-yellow-800 text-yellow-300',
     displayLabel: 'FINANCIAL ACCOUNT',
   },
   SourceIdentity: {
-    color: '#f1f5f9',
-    borderColor: '#475569',
-    textColor: '#1e293b',
+    color: '#1e293b',
+    borderColor: '#64748b',
+    textColor: '#cbd5e1',
     icon: Fingerprint,
-    iconClass: 'text-slate-700',
-    badgeClass: 'bg-slate-100 border-slate-300 text-slate-800',
+    iconClass: 'text-slate-300',
+    badgeClass: 'bg-slate-900 border-slate-700 text-slate-300',
     displayLabel: 'SOURCE IDENTITY',
   },
   Case: {
-    color: '#e0f2fe',
-    borderColor: '#0369a1',
-    textColor: '#0c4a6e',
+    color: '#082f49',
+    borderColor: '#0284c7',
+    textColor: '#7dd3fc',
     icon: Briefcase,
-    iconClass: 'text-sky-700',
-    badgeClass: 'bg-sky-50 border-sky-200 text-sky-800',
+    iconClass: 'text-sky-400',
+    badgeClass: 'bg-sky-950/60 border-sky-800 text-sky-300',
     displayLabel: 'CASE',
   },
   Event: {
-    color: '#f0fdf4',
-    borderColor: '#16a34a',
-    textColor: '#14532d',
+    color: '#052e16',
+    borderColor: '#22c55e',
+    textColor: '#86efac',
     icon: Clock,
-    iconClass: 'text-green-700',
-    badgeClass: 'bg-green-50 border-green-200 text-green-800',
+    iconClass: 'text-green-400',
+    badgeClass: 'bg-green-950/60 border-green-800 text-green-300',
     displayLabel: 'EVENT',
   },
   Assertion: {
-    color: '#faf5ff',
-    borderColor: '#9333ea',
-    textColor: '#581c87',
+    color: '#3b0764',
+    borderColor: '#c084fc',
+    textColor: '#e9d5ff',
     icon: Shield,
-    iconClass: 'text-purple-700',
-    badgeClass: 'bg-purple-50 border-purple-200 text-purple-800',
+    iconClass: 'text-purple-400',
+    badgeClass: 'bg-purple-950/60 border-purple-800 text-purple-300',
     displayLabel: 'ASSERTION',
   },
   Location: {
-    color: '#ecfdf5',
-    borderColor: '#059669',
-    textColor: '#064e3b',
+    color: '#064e3b',
+    borderColor: '#14b8a6',
+    textColor: '#99f6e4',
     icon: MapPin,
-    iconClass: 'text-emerald-700',
-    badgeClass: 'bg-emerald-50 border-emerald-200 text-emerald-800',
+    iconClass: 'text-teal-400',
+    badgeClass: 'bg-teal-950/60 border-teal-800 text-teal-300',
     displayLabel: 'LOCATION',
   },
 };
 
 const FALLBACK_NODE_CONFIG: NodeTypeConfig = {
-  color: '#f8fafc',
-  borderColor: '#94a3b8',
-  textColor: '#334155',
+  color: '#1e293b',
+  borderColor: '#475569',
+  textColor: '#94a3b8',
   icon: GitFork,
-  iconClass: 'text-slate-500',
-  badgeClass: 'bg-slate-50 border-slate-200 text-slate-700',
+  iconClass: 'text-slate-400',
+  badgeClass: 'bg-slate-900 border-slate-700 text-slate-300',
   displayLabel: 'ENTITY',
 };
 
@@ -776,34 +776,34 @@ const CY_STYLE: cytoscape.StylesheetStyle[] = [
     selector: 'node:selected',
     style: {
       'border-width': 3,
-      'border-color': '#1e40af',
-      'background-color': '#bfdbfe',
+      'border-color': '#BD3535',
+      'background-color': '#451016',
     } as any,
   },
   {
     selector: 'node.highlighted',
     style: {
       'border-width': 3,
-      'border-color': '#d97706',
-      'background-color': '#fef3c7',
+      'border-color': '#f59e0b',
+      'background-color': '#451a03',
     } as any,
   },
   {
     selector: 'edge',
     style: {
       'width': 1.5,
-      'line-color': '#94a3b8',
-      'target-arrow-color': '#94a3b8',
+      'line-color': '#334155',
+      'target-arrow-color': '#334155',
       'target-arrow-shape': 'triangle',
       'curve-style': 'bezier',
       'label': 'data(label)',
       'font-family': 'Inter, system-ui, sans-serif',
       'font-size': 9,
       'font-weight': '600',
-      'color': '#475569',
+      'color': '#94a3b8',
       'text-rotation': 'autorotate',
-      'text-background-color': '#ffffff',
-      'text-background-opacity': 0.9,
+      'text-background-color': '#07090e',
+      'text-background-opacity': 0.85,
       'text-background-padding': '2px',
       'text-max-width': '120px',
       'text-wrap': 'ellipsis',
@@ -814,19 +814,19 @@ const CY_STYLE: cytoscape.StylesheetStyle[] = [
   {
     selector: 'edge[edgeClass = "investigative"]',
     style: {
-      'line-color': '#1d4ed8',
-      'target-arrow-color': '#1d4ed8',
+      'line-color': '#3b82f6',
+      'target-arrow-color': '#3b82f6',
       'width': 2,
-      'color': '#1e40af',
+      'color': '#60a5fa',
     } as any,
   },
   {
     selector: 'edge[edgeClass = "case_context"]',
     style: {
-      'line-color': '#bae6fd',
-      'target-arrow-color': '#bae6fd',
+      'line-color': '#0284c7',
+      'target-arrow-color': '#0284c7',
       'width': 1,
-      'color': '#0369a1',
+      'color': '#38bdf8',
       'line-style': 'dashed',
       'line-dash-pattern': [4, 4],
     } as any,
@@ -838,15 +838,15 @@ const CY_STYLE: cytoscape.StylesheetStyle[] = [
       'line-dash-pattern': [6, 3],
       'line-color': '#f59e0b',
       'target-arrow-color': '#f59e0b',
-      'color': '#d97706',
+      'color': '#fbbf24',
     } as any,
   },
   {
     selector: 'edge:selected',
     style: {
       'width': 3,
-      'line-color': '#1e40af',
-      'target-arrow-color': '#1e40af',
+      'line-color': '#BD3535',
+      'target-arrow-color': '#BD3535',
     } as any,
   },
 ];
@@ -861,12 +861,12 @@ type SelectedItem =
 const EpistemicBadge: React.FC<{ status?: string }> = ({ status }) => {
   if (!status) return null;
   const cls = status === 'CONFIRMED'
-    ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+    ? 'bg-emerald-950/60 border-emerald-800 text-emerald-300'
     : status === 'POSSIBLE'
-      ? 'bg-amber-50 border-amber-200 text-amber-800'
+      ? 'bg-amber-950/60 border-amber-800 text-amber-300'
       : status === 'SUSPECTED'
-        ? 'bg-orange-50 border-orange-200 text-orange-800'
-        : 'bg-slate-50 border-slate-200 text-slate-700';
+        ? 'bg-orange-950/60 border-orange-800 text-orange-300'
+        : 'bg-slate-900 border-slate-700 text-slate-300';
   return (
     <span className={`inline-flex items-center text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border ${cls}`}>
       {status}
@@ -907,9 +907,9 @@ const NodeInspector: React.FC<NodeInspectorProps> = ({
   if (p.org_type) identifiers.push({ label: 'Organisation Type', value: String(p.org_type) });
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-[#0b0e17] text-slate-100">
       {/* Header */}
-      <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-start justify-between flex-shrink-0">
+      <div className="px-4 py-3 bg-[#0e131d] border-b border-[#151d2a] flex items-start justify-between flex-shrink-0">
         <div className="flex items-start space-x-2 min-w-0">
           <div className={`w-7 h-7 rounded border flex items-center justify-center flex-shrink-0 mt-0.5 ${cfg.badgeClass}`}>
             <Icon className={`w-3.5 h-3.5 ${cfg.iconClass}`} />
@@ -918,12 +918,12 @@ const NodeInspector: React.FC<NodeInspectorProps> = ({
             <p className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 ${cfg.iconClass}`}>
               {cfg.displayLabel}
             </p>
-            <p className="text-sm font-bold text-slate-900 leading-tight break-words">
+            <p className="text-sm font-bold text-white leading-tight break-words">
               {displayName}
             </p>
           </div>
         </div>
-        <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-700 rounded transition-colors flex-shrink-0">
+        <button onClick={onClose} className="p-1 text-slate-400 hover:text-white rounded transition-colors flex-shrink-0">
           <X className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -935,11 +935,11 @@ const NodeInspector: React.FC<NodeInspectorProps> = ({
         {p.role && (
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Case Role</p>
-            <span className="inline-flex items-center text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-red-50 border-red-200 text-red-800">
+            <span className="inline-flex items-center text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-red-950/60 border-red-800 text-red-300">
               {String(p.role)}
             </span>
             {p.role_basis && (
-              <p className="text-[10px] text-slate-500 mt-1">{String(p.role_basis)}</p>
+              <p className="text-[10px] text-slate-400 mt-1">{String(p.role_basis)}</p>
             )}
           </div>
         )}
@@ -952,7 +952,7 @@ const NodeInspector: React.FC<NodeInspectorProps> = ({
               {identifiers.map(({ label, value }) => (
                 <div key={label}>
                   <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{label}</p>
-                  <p className="text-xs font-mono text-slate-800 mt-0.5 break-all">{value}</p>
+                  <p className="text-xs font-mono text-slate-200 mt-0.5 break-all">{value}</p>
                 </div>
               ))}
             </div>
@@ -963,18 +963,18 @@ const NodeInspector: React.FC<NodeInspectorProps> = ({
         {entityId && (
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Internal Reference</p>
-            <p className="text-[9px] font-mono text-slate-400 break-all">{entityId}</p>
+            <p className="text-[9px] font-mono text-slate-500 break-all">{entityId}</p>
           </div>
         )}
 
         {/* C2 Identity Resolution note — only for person/org/source */}
         {node.labels.some(l => ['Person', 'Organization', 'SourceIdentity'].includes(l)) && (
-          <div className="bg-amber-50 border border-amber-200 rounded p-2.5 space-y-1">
+          <div className="bg-amber-950/40 border border-amber-900/60 rounded p-2.5 space-y-1">
             <div className="flex items-center space-x-1.5">
-              <Info className="w-3 h-3 text-amber-600 flex-shrink-0" />
-              <p className="text-[9px] font-bold text-amber-800 uppercase tracking-wide">C2 Identity Resolution</p>
+              <Info className="w-3 h-3 text-amber-400 flex-shrink-0" />
+              <p className="text-[9px] font-bold text-amber-300 uppercase tracking-wide">C2 Identity Resolution</p>
             </div>
-            <p className="text-[9px] text-amber-700 leading-relaxed">
+            <p className="text-[9px] text-amber-200/80 leading-relaxed">
               Identity candidate relationships are shown as dashed amber edges. They are not confirmed resolutions.
             </p>
           </div>
@@ -982,17 +982,17 @@ const NodeInspector: React.FC<NodeInspectorProps> = ({
       </div>
 
       {/* Footer Actions */}
-      <div className="px-4 py-3 border-t border-slate-100 flex-shrink-0 space-y-2">
+      <div className="px-4 py-3 border-t border-[#151d2a] flex-shrink-0 space-y-2">
         {entityId && !['Case', 'FIR', 'Assertion', 'Event'].includes(primaryLabel) && (
           <button
             onClick={() => onOpenDossier(entityId)}
-            className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded hover:bg-white hover:border-slate-300 transition-colors group"
+            className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-200 bg-[#0e131d] border border-[#151d2a] rounded hover:bg-[#151d2a] hover:border-[#26354a] hover:text-white transition-colors group"
           >
             <div className="flex items-center space-x-2">
-              <FileText className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600" />
+              <FileText className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-300" />
               <span>Open Entity Dossier</span>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-700" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200" />
           </button>
         )}
       </div>
@@ -1014,20 +1014,20 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
   const isCaseContext = edge.edgeClass === 'case_context';
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-[#0b0e17] text-slate-100">
       {/* Header */}
-      <div className={`px-4 py-3 border-b border-slate-200 flex items-start justify-between flex-shrink-0 ${
-        isCandidate ? 'bg-amber-50' : isCaseContext ? 'bg-sky-50' : 'bg-blue-50'
+      <div className={`px-4 py-3 border-b border-[#151d2a] flex items-start justify-between flex-shrink-0 ${
+        isCandidate ? 'bg-amber-950/40' : isCaseContext ? 'bg-sky-950/40' : 'bg-blue-950/40'
       }`}>
         <div>
           <p className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 ${
-            isCandidate ? 'text-amber-600' : isCaseContext ? 'text-sky-600' : 'text-blue-600'
+            isCandidate ? 'text-amber-400' : isCaseContext ? 'text-sky-400' : 'text-blue-400'
           }`}>
             {isCandidate ? 'IDENTITY CANDIDATE' : isCaseContext ? 'CASE CONTEXT' : 'INVESTIGATIVE RELATIONSHIP'}
           </p>
-          <p className="text-sm font-bold text-slate-900 leading-tight">{edge.predicate}</p>
+          <p className="text-sm font-bold text-white leading-tight">{edge.predicate}</p>
         </div>
-        <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-700 rounded transition-colors">
+        <button onClick={onClose} className="p-1 text-slate-400 hover:text-white rounded transition-colors">
           <X className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -1037,12 +1037,12 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
 
         {/* Candidate Warning */}
         {isCandidate && (
-          <div className="bg-amber-50 border border-amber-200 rounded p-2.5">
+          <div className="bg-amber-950/40 border border-amber-900/60 rounded p-2.5">
             <div className="flex items-center space-x-1.5">
-              <Info className="w-3 h-3 text-amber-600 flex-shrink-0" />
-              <p className="text-[9px] font-bold text-amber-800 uppercase tracking-wide">C2 Identity Candidate — Not Confirmed</p>
+              <Info className="w-3 h-3 text-amber-400 flex-shrink-0" />
+              <p className="text-[9px] font-bold text-amber-300 uppercase tracking-wide">C2 Identity Candidate — Not Confirmed</p>
             </div>
-            <p className="text-[9px] text-amber-700 mt-1 leading-relaxed">
+            <p className="text-[9px] text-amber-200/80 mt-1 leading-relaxed">
               This is a deterministic identity candidate link. It has <strong>NOT</strong> been confirmed as a SAME_AS resolution. Do not treat it as a confirmed identity merge.
             </p>
           </div>
@@ -1050,12 +1050,12 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
 
         {/* Case Context note */}
         {isCaseContext && (
-          <div className="bg-sky-50 border border-sky-200 rounded p-2.5">
+          <div className="bg-sky-950/40 border border-sky-900/60 rounded p-2.5">
             <div className="flex items-center space-x-1.5">
-              <Info className="w-3 h-3 text-sky-600 flex-shrink-0" />
-              <p className="text-[9px] font-bold text-sky-800 uppercase tracking-wide">Case Role — Not an Investigative Link</p>
+              <Info className="w-3 h-3 text-sky-400 flex-shrink-0" />
+              <p className="text-[9px] font-bold text-sky-300 uppercase tracking-wide">Case Role — Not an Investigative Link</p>
             </div>
-            <p className="text-[9px] text-sky-700 mt-1 leading-relaxed">
+            <p className="text-[9px] text-sky-200/80 mt-1 leading-relaxed">
               This entity is assigned to this case with the role shown. Shared case membership does not imply a direct investigative association between entities.
             </p>
           </div>
@@ -1065,13 +1065,13 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
         <div>
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Relationship</p>
           <div className="space-y-1">
-            <div className="bg-slate-50 border border-slate-200 rounded p-2">
+            <div className="bg-[#0e131d] border border-[#151d2a] rounded p-2">
               <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Source</p>
-              <p className="text-xs font-semibold text-slate-800">
+              <p className="text-xs font-semibold text-slate-200">
                 {sourceNode ? deriveDisplayName(sourceNode) : edge.source.slice(0, 12) + '…'}
               </p>
               {sourceNode && (
-                <p className="text-[9px] text-slate-500 font-mono mt-0.5">
+                <p className="text-[9px] text-slate-400 font-mono mt-0.5">
                   {getPrimaryLabel(sourceNode.labels)}
                 </p>
               )}
@@ -1079,21 +1079,21 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
             <div className="flex justify-center">
               <span className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded border ${
                 isCandidate
-                  ? 'bg-amber-50 border-amber-200 text-amber-700'
+                  ? 'bg-amber-950/60 border-amber-800 text-amber-300'
                   : isCaseContext
-                    ? 'bg-sky-50 border-sky-200 text-sky-700'
-                    : 'bg-blue-50 border-blue-200 text-blue-700'
+                    ? 'bg-sky-950/60 border-sky-800 text-sky-300'
+                    : 'bg-blue-950/60 border-blue-800 text-blue-300'
               }`}>
                 {edge.rawPredicate}
               </span>
             </div>
-            <div className="bg-slate-50 border border-slate-200 rounded p-2">
+            <div className="bg-[#0e131d] border border-[#151d2a] rounded p-2">
               <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Target</p>
-              <p className="text-xs font-semibold text-slate-800">
+              <p className="text-xs font-semibold text-slate-200">
                 {targetNode ? deriveDisplayName(targetNode) : edge.target.slice(0, 12) + '…'}
               </p>
               {targetNode && (
-                <p className="text-[9px] text-slate-500 font-mono mt-0.5">
+                <p className="text-[9px] text-slate-400 font-mono mt-0.5">
                   {getPrimaryLabel(targetNode.labels)}
                 </p>
               )}
@@ -1113,13 +1113,13 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
         {edge.assertionId && (
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Supporting Assertion</p>
-            <div className="bg-purple-50 border border-purple-200 rounded p-2 space-y-1">
+            <div className="bg-purple-950/40 border border-purple-900/60 rounded p-2 space-y-1">
               <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Assertion ID</p>
-              <p className="text-[9px] font-mono text-slate-700 break-all">{edge.assertionId}</p>
+              <p className="text-[9px] font-mono text-purple-200 break-all">{edge.assertionId}</p>
               {ap.predicate && (
                 <>
                   <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">Predicate</p>
-                  <p className="text-[9px] font-mono text-purple-800 font-bold">{ap.predicate}</p>
+                  <p className="text-[9px] font-mono text-purple-300 font-bold">{ap.predicate}</p>
                 </>
               )}
             </div>
@@ -1130,19 +1130,19 @@ const EdgeInspector: React.FC<EdgeInspectorProps> = ({ edge, sourceNode, targetN
         {edge.rawPredicate === 'PARTICIPATED_AS' && edge.assertionNode && (
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Shared Event</p>
-            <div className="bg-green-50 border border-green-200 rounded p-2 space-y-1">
+            <div className="bg-emerald-950/40 border border-emerald-900/60 rounded p-2 space-y-1">
               {edge.assertionNode.properties?.description && (
-                <p className="text-[10px] text-green-900 leading-relaxed">
+                <p className="text-[10px] text-emerald-200 leading-relaxed">
                   {String(edge.assertionNode.properties.description)}
                 </p>
               )}
               {edge.assertionNode.properties?.event_type && (
-                <p className="text-[9px] font-mono font-bold text-green-700 mt-1">
+                <p className="text-[9px] font-mono font-bold text-emerald-400 mt-1">
                   {String(edge.assertionNode.properties.event_type)}
                 </p>
               )}
               {edge.assertionNode.properties?.occurred_at_lower && (
-                <p className="text-[9px] text-green-600 mt-0.5">
+                <p className="text-[9px] text-emerald-300 mt-0.5">
                   {new Date(String(edge.assertionNode.properties.occurred_at_lower)).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' })}
                 </p>
               )}
@@ -1173,13 +1173,13 @@ const RawEdgeInspector: React.FC<{
     .filter(([k, v]) => !HIDDEN_PROPS.has(k) && v != null && v !== '');
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-start justify-between flex-shrink-0">
+    <div className="flex flex-col h-full bg-[#0b0e17] text-slate-100">
+      <div className="px-4 py-3 bg-[#0e131d] border-b border-[#151d2a] flex items-start justify-between flex-shrink-0">
         <div>
-          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">RELATIONSHIP (PROVENANCE)</p>
-          <p className="text-sm font-bold font-mono text-slate-900">{rel.type}</p>
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">RELATIONSHIP (PROVENANCE)</p>
+          <p className="text-sm font-bold font-mono text-white">{rel.type}</p>
         </div>
-        <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-700 rounded transition-colors">
+        <button onClick={onClose} className="p-1 text-slate-400 hover:text-white rounded transition-colors">
           <X className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -1187,16 +1187,16 @@ const RawEdgeInspector: React.FC<{
         <div>
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Connected Nodes</p>
           <div className="space-y-1">
-            <div className="bg-slate-50 border border-slate-200 rounded p-2">
+            <div className="bg-[#0e131d] border border-[#151d2a] rounded p-2">
               <p className="text-[9px] font-bold text-slate-400 uppercase">Source</p>
-              <p className="text-xs font-semibold text-slate-800">{sourceNode ? deriveDisplayName(sourceNode) : rel.start_node.slice(0, 12) + '…'}</p>
+              <p className="text-xs font-semibold text-slate-200">{sourceNode ? deriveDisplayName(sourceNode) : rel.start_node.slice(0, 12) + '…'}</p>
             </div>
             <div className="flex justify-center">
-              <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded border bg-slate-50 border-slate-200 text-slate-700">{rel.type}</span>
+              <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded border bg-slate-900 border-slate-700 text-slate-300">{rel.type}</span>
             </div>
-            <div className="bg-slate-50 border border-slate-200 rounded p-2">
+            <div className="bg-[#0e131d] border border-[#151d2a] rounded p-2">
               <p className="text-[9px] font-bold text-slate-400 uppercase">Target</p>
-              <p className="text-xs font-semibold text-slate-800">{targetNode ? deriveDisplayName(targetNode) : rel.end_node.slice(0, 12) + '…'}</p>
+              <p className="text-xs font-semibold text-slate-200">{targetNode ? deriveDisplayName(targetNode) : rel.end_node.slice(0, 12) + '…'}</p>
             </div>
           </div>
         </div>
@@ -1207,7 +1207,7 @@ const RawEdgeInspector: React.FC<{
               {propEntries.map(([key, value]) => (
                 <div key={key}>
                   <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{key}</p>
-                  <p className="text-[10px] font-mono text-slate-700 break-all mt-0.5">{String(value)}</p>
+                  <p className="text-[10px] font-mono text-slate-300 break-all mt-0.5">{String(value)}</p>
                 </div>
               ))}
             </div>
@@ -1237,17 +1237,17 @@ const GraphStatsBar: React.FC<{
       : rawRels;
 
   return (
-    <div className="bg-white border border-t-0 border-slate-200 rounded-b px-4 py-1.5 flex items-center justify-between flex-shrink-0">
-      <div className="flex items-center space-x-4 text-[10px] font-mono text-slate-500">
-        <span><span className="font-bold text-slate-700">{visibleNodes}</span> entities</span>
-        <span><span className="font-bold text-slate-700">{visibleEdges}</span> relationships</span>
+    <div className="bg-[#0b0e17] border border-t-0 border-[#151d2a] rounded-b px-4 py-2 flex items-center justify-between flex-shrink-0">
+      <div className="flex items-center space-x-4 text-[10px] font-mono text-slate-400">
+        <span><span className="font-bold text-white">{visibleNodes}</span> entities</span>
+        <span><span className="font-bold text-white">{visibleEdges}</span> relationships</span>
         {viewMode !== 'provenance' && (
           <span>
-            raw graph: <span className="font-bold text-slate-600">{rawNodes}n / {rawRels}r</span>
+            raw graph: <span className="font-bold text-slate-300">{rawNodes}n / {rawRels}r</span>
           </span>
         )}
       </div>
-      <div className="text-[9px] font-mono text-slate-400">
+      <div className="text-[9px] font-mono text-slate-500">
         ACL-enforced · bounded traversal · Neo4j
       </div>
     </div>
@@ -1266,32 +1266,32 @@ const GraphLegend: React.FC<{ viewMode: ViewMode }> = ({ viewMode }) => {
   ];
 
   return (
-    <div className="absolute bottom-3 left-3 bg-white/95 border border-slate-200 rounded shadow-sm p-2 z-10 max-w-[200px]">
+    <div className="absolute bottom-3 left-3 bg-[#0b0e17]/95 border border-[#151d2a] rounded shadow-lg p-2.5 z-10 max-w-[210px] backdrop-blur-sm">
       <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Entity Types</p>
-      <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
         {investigativeItems.map(({ label, cfg }) => (
           <div key={label} className="flex items-center space-x-1.5">
             <div className="w-3.5 h-3.5 rounded-sm border flex-shrink-0" style={{ backgroundColor: cfg.color, borderColor: cfg.borderColor }} />
-            <span className="text-[9px] text-slate-600 font-medium">{label}</span>
+            <span className="text-[9px] text-slate-300 font-medium">{label}</span>
           </div>
         ))}
       </div>
-      <div className="mt-2 pt-2 border-t border-slate-100 space-y-1">
+      <div className="mt-2.5 pt-2 border-t border-[#151d2a] space-y-1.5">
         {viewMode === 'investigative' && (
           <div className="flex items-center space-x-1.5">
-            <div className="w-8 h-0 border-t-2 border-blue-600 flex-shrink-0" />
-            <span className="text-[9px] text-blue-600">Evidence-backed</span>
+            <div className="w-8 h-0 border-t-2 border-blue-500 flex-shrink-0" />
+            <span className="text-[9px] text-blue-400">Evidence-backed</span>
           </div>
         )}
         {viewMode === 'case_context' && (
           <div className="flex items-center space-x-1.5">
             <div className="w-8 h-0 border-t border-dashed border-sky-400 flex-shrink-0" />
-            <span className="text-[9px] text-sky-600">Case role</span>
+            <span className="text-[9px] text-sky-400">Case role</span>
           </div>
         )}
         <div className="flex items-center space-x-1.5">
           <div className="w-8 h-0 border-t-2 border-dashed border-amber-500 flex-shrink-0" />
-          <span className="text-[9px] text-amber-600">Candidate (C2)</span>
+          <span className="text-[9px] text-amber-400">Candidate (C2)</span>
         </div>
       </div>
     </div>
@@ -1504,40 +1504,40 @@ export const InvestigativeGraphPage: React.FC = () => {
   return (
     <div className="flex flex-col h-full min-h-0 space-y-4">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-3 border-b border-slate-200 gap-3 flex-shrink-0">
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-3 border-b border-[#151d2a] gap-3 flex-shrink-0">
         <div>
           <div className="flex items-center space-x-2 mb-1.5">
             <button
               onClick={() => navigate(caseId ? `/cases/${caseId}` : '/cases')}
-              className="flex items-center space-x-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 transition-colors"
+              className="flex items-center space-x-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Case</span>
             </button>
-            <span className="text-slate-300">/</span>
-            <span className="text-xs text-slate-500">Investigative Graph</span>
+            <span className="text-slate-600">/</span>
+            <span className="text-xs text-slate-400">Investigative Graph</span>
           </div>
           <div className="flex items-center space-x-3">
-            <GitFork className="w-5 h-5 text-slate-600" />
-            <h1 className="text-xl font-extrabold text-slate-900 tracking-tight uppercase">
+            <GitFork className="w-5 h-5 text-[#BD3535]" />
+            <h1 className="text-xl font-extrabold text-white tracking-tight uppercase">
               Investigative Graph
             </h1>
             {caseData && (
-              <span className="text-[11px] font-mono font-bold bg-slate-900 text-white px-2.5 py-0.5 rounded">
+              <span className="text-[11px] font-mono font-bold bg-[#151d2a] border border-[#26354a] text-slate-200 px-2.5 py-0.5 rounded">
                 {caseData.case_number}
               </span>
             )}
-            {caseLoading && <Loader2 className="w-4 h-4 animate-spin text-amber-600" />}
+            {caseLoading && <Loader2 className="w-4 h-4 animate-spin text-[#BD3535]" />}
           </div>
           {caseData && (
-            <p className="text-xs text-slate-600 mt-0.5 font-medium">{caseData.title}</p>
+            <p className="text-xs text-slate-400 mt-0.5 font-medium">{caseData.title}</p>
           )}
         </div>
 
         {/* Controls */}
         <div className="flex items-center gap-2 flex-wrap">
           {/* View Mode */}
-          <div className="flex items-center border border-slate-300 rounded overflow-hidden bg-white shadow-2xs">
+          <div className="flex items-center border border-[#151d2a] rounded overflow-hidden bg-[#0b0e17] shadow-sm">
             {([
               { mode: 'investigative' as ViewMode, label: 'INVESTIGATIVE', icon: Eye },
               { mode: 'case_context' as ViewMode, label: 'CASE CONTEXT', icon: Layers },
@@ -1547,10 +1547,10 @@ export const InvestigativeGraphPage: React.FC = () => {
                 key={mode}
                 id={`view-${mode}`}
                 onClick={() => { setViewMode(mode); setSelectedItem(null); }}
-                className={`flex items-center space-x-1.5 px-3 py-1.5 text-[10px] font-bold transition-colors border-r border-slate-300 last:border-r-0 ${
+                className={`flex items-center space-x-1.5 px-3 py-1.5 text-[10px] font-bold transition-colors border-r border-[#151d2a] last:border-r-0 ${
                   viewMode === mode
-                    ? 'bg-slate-900 text-white'
-                    : 'text-slate-700 hover:bg-slate-50'
+                    ? 'bg-[#BD3535] text-white'
+                    : 'text-slate-400 hover:bg-[#151d2a] hover:text-white'
                 }`}
               >
                 <Icon className="w-3 h-3" />
@@ -1560,18 +1560,18 @@ export const InvestigativeGraphPage: React.FC = () => {
           </div>
 
           {/* Depth control */}
-          <div className="flex items-center border border-slate-300 rounded overflow-hidden bg-white shadow-2xs">
+          <div className="flex items-center border border-[#151d2a] rounded overflow-hidden bg-[#0b0e17] shadow-sm">
             <button
               id="depth-1-btn"
               onClick={() => { setDepth(1); setSelectedItem(null); }}
-              className={`px-3 py-1.5 text-xs font-bold transition-colors ${depth === 1 ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-50'}`}
+              className={`px-3 py-1.5 text-xs font-bold transition-colors ${depth === 1 ? 'bg-[#BD3535] text-white' : 'text-slate-400 hover:bg-[#151d2a] hover:text-white'}`}
             >
               1 HOP
             </button>
             <button
               id="depth-2-btn"
               onClick={() => { setDepth(2); setSelectedItem(null); }}
-              className={`px-3 py-1.5 text-xs font-bold border-l border-slate-300 transition-colors ${depth === 2 ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-50'}`}
+              className={`px-3 py-1.5 text-xs font-bold border-l border-[#151d2a] transition-colors ${depth === 2 ? 'bg-[#BD3535] text-white' : 'text-slate-400 hover:bg-[#151d2a] hover:text-white'}`}
             >
               2 HOPS
             </button>
@@ -1579,27 +1579,27 @@ export const InvestigativeGraphPage: React.FC = () => {
 
           {/* Fit / Reset / Refresh / Zoom */}
           <button id="graph-fit-btn" onClick={handleFit} disabled={!hasGraph}
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors disabled:opacity-40 shadow-2xs">
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-[#0b0e17] border border-[#151d2a] rounded hover:bg-[#151d2a] hover:text-white transition-colors disabled:opacity-30 shadow-sm">
             <Maximize2 className="w-3.5 h-3.5" />
             <span>Fit</span>
           </button>
           <button id="graph-reset-btn" onClick={handleReset} disabled={!hasGraph}
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors disabled:opacity-40 shadow-2xs">
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-[#0b0e17] border border-[#151d2a] rounded hover:bg-[#151d2a] hover:text-white transition-colors disabled:opacity-30 shadow-sm">
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset</span>
           </button>
           <button id="graph-refresh-btn" onClick={() => refetchGraph()} disabled={graphFetching}
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors disabled:opacity-40 shadow-2xs">
-            <RefreshCw className={`w-3.5 h-3.5 ${graphFetching ? 'animate-spin text-amber-600' : ''}`} />
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-[#0b0e17] border border-[#151d2a] rounded hover:bg-[#151d2a] hover:text-white transition-colors disabled:opacity-30 shadow-sm">
+            <RefreshCw className={`w-3.5 h-3.5 ${graphFetching ? 'animate-spin text-[#BD3535]' : ''}`} />
             <span>Refresh</span>
           </button>
-          <div className="flex items-center border border-slate-300 rounded overflow-hidden bg-white shadow-2xs">
+          <div className="flex items-center border border-[#151d2a] rounded overflow-hidden bg-[#0b0e17] shadow-sm">
             <button id="graph-zoom-in" onClick={handleZoomIn} disabled={!hasGraph}
-              className="px-2.5 py-1.5 text-slate-700 hover:bg-slate-50 transition-colors disabled:opacity-40">
+              className="px-2.5 py-1.5 text-slate-400 hover:bg-[#151d2a] hover:text-white transition-colors disabled:opacity-30">
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
             <button id="graph-zoom-out" onClick={handleZoomOut} disabled={!hasGraph}
-              className="px-2.5 py-1.5 text-slate-700 hover:bg-slate-50 border-l border-slate-300 transition-colors disabled:opacity-40">
+              className="px-2.5 py-1.5 text-slate-400 hover:bg-[#151d2a] hover:text-white border-l border-[#151d2a] transition-colors disabled:opacity-30">
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -1608,10 +1608,10 @@ export const InvestigativeGraphPage: React.FC = () => {
 
       {/* View Mode info banner */}
       {viewMode === 'investigative' && presentationGraph && depth === 1 && presentationGraph.investigativeEdges.length === 0 && presentationGraph.domainNodes.length > 0 && (
-        <div className="flex items-start space-x-2 bg-blue-50 border border-blue-200 rounded px-3 py-2 text-xs flex-shrink-0">
-          <Info className="w-3.5 h-3.5 text-blue-600 flex-shrink-0 mt-0.5" />
-          <span className="text-blue-800">
-            <strong>Investigative view at 1-hop:</strong> {presentationGraph.domainNodes.length} entities are assigned to this case. Switch to <strong>2 HOPS</strong> to load evidence-backed relationship edges (REGISTERED_TO, DRIVER_OF, OWNS, etc.), or switch to <strong>CASE CONTEXT</strong> to see case membership structure.
+        <div className="flex items-start space-x-2 bg-blue-950/40 border border-blue-900/60 rounded px-3 py-2 text-xs flex-shrink-0">
+          <Info className="w-3.5 h-3.5 text-blue-400 flex-shrink-0 mt-0.5" />
+          <span className="text-blue-200">
+            <strong className="text-white">Investigative view at 1-hop:</strong> {presentationGraph.domainNodes.length} entities are assigned to this case. Switch to <strong className="text-white">2 HOPS</strong> to load evidence-backed relationship edges (REGISTERED_TO, DRIVER_OF, OWNS, etc.), or switch to <strong className="text-white">CASE CONTEXT</strong> to see case membership structure.
           </span>
         </div>
       )}
@@ -1620,15 +1620,15 @@ export const InvestigativeGraphPage: React.FC = () => {
       <div className="flex gap-4 flex-1 min-h-0" style={{ height: 'calc(100vh - 300px)', minHeight: '480px' }}>
         {/* Graph Canvas */}
         <div className="flex flex-col flex-1 min-w-0 min-h-0">
-          <div className="flex-1 relative bg-white border border-slate-200 rounded-t shadow-sm overflow-hidden min-h-0">
+          <div className="flex-1 relative bg-[#07090e] border border-[#151d2a] rounded-t shadow-sm overflow-hidden min-h-0">
 
             {/* Loading overlay */}
             {isLoading && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 z-20 space-y-3">
-                <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#07090e]/90 z-20 space-y-3">
+                <Loader2 className="w-8 h-8 animate-spin text-[#BD3535]" />
                 <div className="text-center">
-                  <p className="text-sm font-bold text-slate-900 uppercase tracking-wide">Loading Graph</p>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">
+                  <p className="text-sm font-bold text-white uppercase tracking-wide">Loading Graph</p>
+                  <p className="text-xs text-slate-400 font-mono mt-0.5">
                     Bounded traversal · depth {depth} · ACL enforced
                   </p>
                 </div>
@@ -1637,21 +1637,21 @@ export const InvestigativeGraphPage: React.FC = () => {
 
             {/* Error */}
             {!isLoading && hasError && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center z-20 space-y-4">
-                <AlertTriangle className="w-10 h-10 text-red-400" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-20 space-y-4 bg-[#07090e]/90">
+                <AlertTriangle className="w-10 h-10 text-red-500" />
                 <div className="text-center">
-                  <p className="text-sm font-bold text-slate-900 uppercase tracking-wide">Graph Unavailable</p>
-                  <p className="text-xs text-slate-500 mt-1 max-w-sm">
+                  <p className="text-sm font-bold text-white uppercase tracking-wide">Graph Unavailable</p>
+                  <p className="text-xs text-slate-400 mt-1 max-w-sm">
                     {graphError instanceof Error ? graphError.message : 'Unable to retrieve the case graph.'}
                   </p>
                 </div>
                 <div className="flex items-center space-x-3">
                   <button onClick={() => refetchGraph()}
-                    className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-white bg-slate-900 rounded hover:bg-slate-800 transition-colors">
+                    className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-white bg-[#BD3535] rounded hover:bg-[#a32a2a] transition-colors">
                     <RefreshCw className="w-3.5 h-3.5" /><span>Retry</span>
                   </button>
                   <button onClick={() => navigate('/cases')}
-                    className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-300 rounded hover:bg-slate-200 transition-colors">
+                    className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-slate-300 bg-[#0e131d] border border-[#151d2a] rounded hover:bg-[#151d2a] hover:text-white transition-colors">
                     <ArrowLeft className="w-3.5 h-3.5" /><span>Return to Cases</span>
                   </button>
                 </div>
@@ -1661,10 +1661,10 @@ export const InvestigativeGraphPage: React.FC = () => {
             {/* Empty graph */}
             {!isLoading && !hasError && isEmptyGraph && (
               <div className="absolute inset-0 flex flex-col items-center justify-center z-20 space-y-4">
-                <GitFork className="w-12 h-12 text-slate-200" />
+                <GitFork className="w-12 h-12 text-slate-700" />
                 <div className="text-center">
-                  <p className="text-sm font-bold text-slate-700 uppercase tracking-wide">No Graph Data</p>
-                  <p className="text-xs text-slate-400 mt-1 max-w-sm">
+                  <p className="text-sm font-bold text-slate-300 uppercase tracking-wide">No Graph Data</p>
+                  <p className="text-xs text-slate-500 mt-1 max-w-sm">
                     No relationships are projected for this case at depth {depth}.
                     Entities may not yet be linked to the case, or the Neo4j projection is pending.
                   </p>
@@ -1672,12 +1672,12 @@ export const InvestigativeGraphPage: React.FC = () => {
                 <div className="flex items-center space-x-3">
                   {depth === 1 && (
                     <button onClick={() => setDepth(2)}
-                      className="px-4 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors">
+                      className="px-4 py-2 text-xs font-semibold text-slate-200 bg-[#0e131d] border border-[#151d2a] rounded hover:bg-[#151d2a] hover:text-white transition-colors">
                       Try 2 HOPS
                     </button>
                   )}
                   <button onClick={() => navigate('/cases')}
-                    className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-300 rounded hover:bg-slate-200 transition-colors">
+                    className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-slate-300 bg-[#0e131d] border border-[#151d2a] rounded hover:bg-[#151d2a] transition-colors">
                     <ArrowLeft className="w-3.5 h-3.5" /><span>Return to Cases</span>
                   </button>
                 </div>
@@ -1701,11 +1701,11 @@ export const InvestigativeGraphPage: React.FC = () => {
                     placeholder="Highlight entities..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-48 pl-7 pr-3 py-1.5 text-xs border border-slate-300 rounded bg-white shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-900 placeholder-slate-400"
+                    className="w-48 pl-7 pr-3 py-1.5 text-xs border border-[#151d2a] rounded bg-[#0e131d]/90 text-white shadow-sm focus:outline-none focus:ring-1 focus:ring-[#BD3535] placeholder-slate-500 backdrop-blur-sm"
                   />
                   {searchTerm && (
                     <button onClick={() => setSearchTerm('')}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700">
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
                       <X className="w-3 h-3" />
                     </button>
                   )}
@@ -1717,9 +1717,9 @@ export const InvestigativeGraphPage: React.FC = () => {
             {hasGraph && (
               <div className="absolute top-3 left-3 z-10">
                 <span className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded border ${
-                  viewMode === 'investigative' ? 'bg-blue-50 border-blue-200 text-blue-700' :
-                  viewMode === 'case_context' ? 'bg-sky-50 border-sky-200 text-sky-700' :
-                  'bg-purple-50 border-purple-200 text-purple-700'
+                  viewMode === 'investigative' ? 'bg-blue-950/60 border-blue-800 text-blue-300' :
+                  viewMode === 'case_context' ? 'bg-sky-950/60 border-sky-800 text-sky-300' :
+                  'bg-purple-950/60 border-purple-800 text-purple-300'
                 }`}>
                   {viewMode === 'investigative' ? 'INVESTIGATIVE VIEW' :
                    viewMode === 'case_context' ? 'CASE CONTEXT VIEW' : 'PROVENANCE VIEW'}
@@ -1740,7 +1740,7 @@ export const InvestigativeGraphPage: React.FC = () => {
         </div>
 
         {/* Inspector Panel */}
-        <div className="w-72 flex-shrink-0 bg-white border border-slate-200 rounded shadow-sm overflow-hidden flex flex-col">
+        <div className="w-72 flex-shrink-0 bg-[#0b0e17] border border-[#151d2a] rounded shadow-sm overflow-hidden flex flex-col">
           {selectedItem ? (
             selectedItem.kind === 'node' ? (
               <NodeInspector
@@ -1766,19 +1766,27 @@ export const InvestigativeGraphPage: React.FC = () => {
               />
             )
           ) : (
-            <div className="p-4 flex flex-col h-full">
+            <div className="p-4 flex flex-col h-full bg-[#0b0e17] text-slate-100">
               <div>
-                <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">Inspector</h3>
+                <h3 className="text-xs font-bold text-white uppercase tracking-wide mb-1">Inspector</h3>
                 <p className="text-[10px] text-slate-400 mb-4">Click a node or relationship to inspect it.</p>
               </div>
 
               {/* View mode help */}
               <div className="space-y-3">
-                <div className={`rounded p-2.5 border ${viewMode === 'investigative' ? 'bg-blue-50 border-blue-200' : viewMode === 'case_context' ? 'bg-sky-50 border-sky-200' : 'bg-purple-50 border-purple-200'}`}>
-                  <p className={`text-[9px] font-bold uppercase tracking-wide mb-1 ${viewMode === 'investigative' ? 'text-blue-700' : viewMode === 'case_context' ? 'text-sky-700' : 'text-purple-700'}`}>
+                <div className={`rounded p-2.5 border ${
+                  viewMode === 'investigative'
+                    ? 'bg-blue-950/40 border-blue-900/60'
+                    : viewMode === 'case_context'
+                      ? 'bg-sky-950/40 border-sky-900/60'
+                      : 'bg-purple-950/40 border-purple-900/60'
+                }`}>
+                  <p className={`text-[9px] font-bold uppercase tracking-wide mb-1 ${
+                    viewMode === 'investigative' ? 'text-blue-400' : viewMode === 'case_context' ? 'text-sky-400' : 'text-purple-400'
+                  }`}>
                     {viewMode === 'investigative' ? 'INVESTIGATIVE VIEW' : viewMode === 'case_context' ? 'CASE CONTEXT VIEW' : 'PROVENANCE VIEW'}
                   </p>
-                  <p className="text-[9px] text-slate-600 leading-relaxed">
+                  <p className="text-[9px] text-slate-300 leading-relaxed">
                     {viewMode === 'investigative'
                       ? 'Shows only domain entities (Persons, Orgs, Vehicles, etc.) connected by evidence-backed predicates (REGISTERED_TO, DRIVER_OF, OWNS, etc.). Case infrastructure and internal nodes are hidden.'
                       : viewMode === 'case_context'
@@ -1788,28 +1796,28 @@ export const InvestigativeGraphPage: React.FC = () => {
                 </div>
 
                 {presentationGraph && (
-                  <div className="border border-slate-200 rounded p-2.5 space-y-2">
+                  <div className="border border-[#151d2a] bg-[#0e131d] rounded p-2.5 space-y-2">
                     <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Graph Summary</p>
                     <div className="grid grid-cols-2 gap-1.5 text-[10px]">
-                      <div className="bg-slate-50 rounded p-1.5 text-center">
-                        <p className="font-bold text-slate-800">{presentationGraph.domainNodes.length}</p>
-                        <p className="text-slate-500 text-[8px]">Entities</p>
+                      <div className="bg-[#0b0e17] border border-[#151d2a] rounded p-1.5 text-center">
+                        <p className="font-bold text-white">{presentationGraph.domainNodes.length}</p>
+                        <p className="text-slate-400 text-[8px]">Entities</p>
                       </div>
-                      <div className="bg-blue-50 rounded p-1.5 text-center">
-                        <p className="font-bold text-blue-800">{presentationGraph.investigativeEdges.length}</p>
-                        <p className="text-blue-600 text-[8px]">Inv. Links</p>
+                      <div className="bg-blue-950/50 border border-blue-900/60 rounded p-1.5 text-center">
+                        <p className="font-bold text-blue-300">{presentationGraph.investigativeEdges.length}</p>
+                        <p className="text-blue-400 text-[8px]">Inv. Links</p>
                       </div>
-                      <div className="bg-amber-50 rounded p-1.5 text-center">
-                        <p className="font-bold text-amber-800">{presentationGraph.assertionNodes.length}</p>
-                        <p className="text-amber-600 text-[8px]">Assertions</p>
+                      <div className="bg-amber-950/50 border border-amber-900/60 rounded p-1.5 text-center">
+                        <p className="font-bold text-amber-300">{presentationGraph.assertionNodes.length}</p>
+                        <p className="text-amber-400 text-[8px]">Assertions</p>
                       </div>
-                      <div className="bg-green-50 rounded p-1.5 text-center">
-                        <p className="font-bold text-green-800">{presentationGraph.eventNodes.length}</p>
-                        <p className="text-green-600 text-[8px]">Events</p>
+                      <div className="bg-emerald-950/50 border border-emerald-900/60 rounded p-1.5 text-center">
+                        <p className="font-bold text-emerald-300">{presentationGraph.eventNodes.length}</p>
+                        <p className="text-emerald-400 text-[8px]">Events</p>
                       </div>
                     </div>
                     <p className="text-[9px] text-slate-400 leading-relaxed">
-                      Switch to <strong>PROVENANCE</strong> view to inspect {presentationGraph.assertionNodes.length} raw assertion nodes and {presentationGraph.eventNodes.length} event nodes.
+                      Switch to <strong className="text-slate-200">PROVENANCE</strong> view to inspect {presentationGraph.assertionNodes.length} raw assertion nodes and {presentationGraph.eventNodes.length} event nodes.
                     </p>
                   </div>
                 )}

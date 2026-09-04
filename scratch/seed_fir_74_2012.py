@@ -1,7 +1,12 @@
-import psycopg2
+import psycopg
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 def seed_fir_case():
-    conn = psycopg2.connect(dbname="civix_demo", user="postgres", password="postgres", host="localhost", port=5432)
+    from civix_api.config import settings
+    sync_dsn = settings.civix_database_url.replace("postgresql+asyncpg://", "postgresql://")
+    conn = psycopg.connect(sync_dsn, autocommit=True)
     cur = conn.cursor()
 
     case_id = "f1742012-0074-4000-8000-000000000074"
